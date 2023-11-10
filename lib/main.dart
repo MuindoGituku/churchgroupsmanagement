@@ -7,9 +7,9 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
-    statusBarIconBrightness: Brightness.light,
+    statusBarIconBrightness: Brightness.dark,
   ));
 
   runApp(const MyApp());
@@ -24,11 +24,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Auctioneers Diary',
       theme: ThemeData(
-        primaryColor: AppColors().mainBlueColor,
-        scaffoldBackgroundColor: const Color.fromARGB(255, 237, 236, 236),
+        primaryColor: AppDecorations().mainBlueColor,
+        //scaffoldBackgroundColor: const Color.fromARGB(255, 237, 236, 236),
+        scaffoldBackgroundColor: Theme.of(context).canvasColor,
         fontFamily: "OpenSansRegular",
         colorScheme: ColorScheme.fromSeed(
-          seedColor: AppColors().mainBlueColor,
+          seedColor: AppDecorations().mainBlueColor,
         ),
         useMaterial3: true,
       ),

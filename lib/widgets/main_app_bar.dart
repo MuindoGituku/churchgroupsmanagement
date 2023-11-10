@@ -9,38 +9,30 @@ class MainPageAppBar extends StatelessWidget {
     super.key,
     required this.pageTitle,
     required this.pageSubtitle,
-    required this.onTapTrailing,
+    required this.onTapSearch,
+    required this.onTapAdd,
   });
 
   final String pageTitle;
   final String pageSubtitle;
-  final void Function() onTapTrailing;
+  final void Function() onTapSearch;
+  final void Function() onTapAdd;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: ScreenDimension().screenWidth(context),
-      height: ScreenDimension().screenHeight(context) * 0.14,
-      decoration: BoxDecoration(
-        color: AppColors().mainBlueColor,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.2),
-            offset: Offset(1, 2),
-            blurRadius: 5,
-            spreadRadius: 1,
-          ),
-        ],
-      ),
+      height: ScreenDimension().screenHeight(context) * 0.13,
       child: Padding(
         padding: EdgeInsets.fromLTRB(
           15,
           MediaQuery.of(context).padding.top,
           20,
-          10,
+          0,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -49,49 +41,39 @@ class MainPageAppBar extends StatelessWidget {
                 GestureDetector(
                   onTap: () => zoomDrawerController.toggle!(),
                   child: Container(
-                    padding: EdgeInsets.all(7),
-                    margin: EdgeInsets.only(top: 5),
+                    padding: const EdgeInsets.all(7),
+                    margin: const EdgeInsets.only(top: 5),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: AppDecorations().mainBlueColor,
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: SvgPicture.asset(
                       "assets/icons/menu_burger.svg",
-                      color: AppColors().mainBlueColor,
+                      color: Colors.white,
                       width: 17,
                       height: 17,
                     ),
                   ),
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 15),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       pageTitle,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontFamily: "Poppins",
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        fontWeight: FontWeight.w800,
                         letterSpacing: 0.7,
                         height: 1.5,
-                        fontSize: 17,
-                        shadows: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.5),
-                            offset: Offset(1, 2),
-                            blurRadius: 3,
-                            spreadRadius: 5,
-                          ),
-                        ],
+                        fontSize: 15,
                       ),
                     ),
                     Text(
                       pageSubtitle,
-                      style: TextStyle(
-                        color: Colors.white,
+                      style: const TextStyle(
                         letterSpacing: 0.7,
-                        fontSize: 14,
+                        fontSize: 12,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -99,18 +81,28 @@ class MainPageAppBar extends StatelessWidget {
                 ),
               ],
             ),
-            GestureDetector(
-              onTap: () => onTapTrailing,
-              child: Icon(
-                CupertinoIcons.add,
-                color: Colors.white,
-                size: 30,
-                shadows: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.5),
-                    offset: Offset(1, 2),
-                    blurRadius: 3,
-                    spreadRadius: 5,
+            Padding(
+              padding: const EdgeInsets.only(top: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  GestureDetector(
+                    onTap: onTapSearch,
+                    child: Icon(
+                      CupertinoIcons.search,
+                      color: AppDecorations().mainBlueColor,
+                      size: 25,
+                    ),
+                  ),
+                  const SizedBox(width: 25),
+                  GestureDetector(
+                    onTap: onTapAdd,
+                    child: Icon(
+                      CupertinoIcons.ellipsis_vertical,
+                      color: AppDecorations().mainBlueColor,
+                      size: 25,
+                    ),
                   ),
                 ],
               ),

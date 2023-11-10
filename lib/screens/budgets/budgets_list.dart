@@ -1,5 +1,4 @@
-import 'package:churchgroupsmanagement/forms/create_new_budget.dart';
-import 'package:churchgroupsmanagement/screens/root_navigation.dart';
+import 'package:churchgroupsmanagement/screens/budgets/create_new_budget.dart';
 import 'package:churchgroupsmanagement/widgets/main_app_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -21,9 +20,14 @@ class _AllGroupBudgetsState extends State<AllGroupBudgets> {
           MainPageAppBar(
             pageTitle: "Group Budgets",
             pageSubtitle: "Woman's Guild",
-            onTapTrailing: () {
+            onTapAdd: () {
               Navigator.of(context).push(CupertinoPageRoute(builder: (context) {
-                return CreateNewBudget();
+                return const CreateNewBudget();
+              }));
+            },
+            onTapSearch: () {
+              Navigator.of(context).push(CupertinoPageRoute(builder: (context) {
+                return const CreateNewBudget();
               }));
             },
           ),

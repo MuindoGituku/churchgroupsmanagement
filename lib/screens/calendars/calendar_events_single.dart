@@ -1,5 +1,3 @@
-import 'package:churchgroupsmanagement/screens/root_navigation.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SingleCalendarofEvents extends StatefulWidget {
@@ -12,6 +10,6 @@ class SingleCalendarofEvents extends StatefulWidget {
 class _SingleCalendarofEventsState extends State<SingleCalendarofEvents> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return const Scaffold();
   }
 }

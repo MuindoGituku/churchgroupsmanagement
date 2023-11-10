@@ -1,9 +1,9 @@
-import 'package:churchgroupsmanagement/screens/acitivity_reports_list.dart';
-import 'package:churchgroupsmanagement/screens/budgets_list.dart';
-import 'package:churchgroupsmanagement/screens/calendar_events_list.dart';
-import 'package:churchgroupsmanagement/screens/minutes_list.dart';
-import 'package:churchgroupsmanagement/screens/requisitions_list.dart';
-import 'package:churchgroupsmanagement/screens/returns_list.dart';
+import 'package:churchgroupsmanagement/screens/reports/acitivity_reports_list.dart';
+import 'package:churchgroupsmanagement/screens/budgets/budgets_list.dart';
+import 'package:churchgroupsmanagement/screens/calendars/calendar_events_list.dart';
+import 'package:churchgroupsmanagement/screens/minutes/minutes_list.dart';
+import 'package:churchgroupsmanagement/screens/requisitions/requisitions_list.dart';
+import 'package:churchgroupsmanagement/screens/returns/returns_list.dart';
 import 'package:churchgroupsmanagement/services/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -56,19 +56,19 @@ class _AppRootNavigationState extends State<AppRootNavigation> {
   Widget getSelectedScreen() {
     switch (currentSelectedScreen) {
       case 0:
-        return AllGroupMinutes();
+        return const AllGroupMinutes();
       case 1:
-        return AllActivityReports();
+        return const AllActivityReports();
       case 2:
-        return AllCalendarEvents();
+        return const AllCalendarEvents();
       case 3:
-        return AllGroupBudgets();
+        return const AllGroupBudgets();
       case 4:
-        return AllExpenseRequisitions();
+        return const AllExpenseRequisitions();
       case 5:
-        return AllReturnForms();
+        return const AllReturnForms();
       default:
-        return AllGroupMinutes();
+        return const AllGroupMinutes();
     }
   }
 }
@@ -87,17 +87,17 @@ class ZoomMenuScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       elevation: 10,
-      color: AppColors().mainBlueColor,
+      color: AppDecorations().mainBlueColor,
       child: Column(
         children: <Widget>[
-          Spacer(),
+          const Spacer(),
           ...appMenuItemsList
               .map((item) => buildMenuItem(
                     item,
                     appMenuItemsList.indexOf(item),
                   ))
               .toList(),
-          Spacer(),
+          const Spacer(),
         ],
       ),
     );
@@ -105,7 +105,7 @@ class ZoomMenuScreen extends StatelessWidget {
 
   Widget buildMenuItem(MenuItem menuItem, int menuItemIndex) {
     return ListTileTheme(
-      selectedTileColor: Color.fromARGB(255, 110, 117, 131),
+      selectedTileColor: const Color.fromARGB(255, 110, 117, 131),
       textColor: Colors.white,
       selectedColor: Colors.white,
       child: ListTile(
@@ -146,7 +146,7 @@ class _ZoomMainScreenState extends State<ZoomMainScreen> {
           onPressed: () {
             zoomDrawerController.toggle!();
           },
-          icon: Icon(
+          icon: const Icon(
             CupertinoIcons.line_horizontal_3,
           ),
         ),

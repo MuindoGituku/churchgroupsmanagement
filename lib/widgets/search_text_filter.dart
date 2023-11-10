@@ -18,13 +18,13 @@ class SearchTextFilter extends StatelessWidget {
         SizedBox(
           width: ScreenDimension().screenWidth(context) * 0.75,
           child: TextFormField(
-            style: TextStyle(
+            style: const TextStyle(
               height: 1,
               fontSize: 13,
               fontWeight: FontWeight.bold,
             ),
             decoration: InputDecoration(
-              prefixIcon: Icon(
+              prefixIcon: const Icon(
                 CupertinoIcons.search,
                 size: 15,
               ),
@@ -32,7 +32,7 @@ class SearchTextFilter extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
               labelText: searchLabel,
-              labelStyle: TextStyle(
+              labelStyle: const TextStyle(
                 fontSize: 13,
                 fontWeight: FontWeight.w400,
                 height: 1,
@@ -42,7 +42,7 @@ class SearchTextFilter extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {},
-          child: Icon(
+          child: const Icon(
             CupertinoIcons.slider_horizontal_3,
             color: Colors.blue,
             size: 30,

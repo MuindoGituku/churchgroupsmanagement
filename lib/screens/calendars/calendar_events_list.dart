@@ -1,5 +1,4 @@
-import 'package:churchgroupsmanagement/forms/create_new_calendar.dart';
-import 'package:churchgroupsmanagement/screens/root_navigation.dart';
+import 'package:churchgroupsmanagement/screens/calendars/create_new_calendar.dart';
 import 'package:churchgroupsmanagement/widgets/main_app_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -21,9 +20,14 @@ class _AllCalendarEventsState extends State<AllCalendarEvents> {
           MainPageAppBar(
             pageTitle: "Calendars of Events",
             pageSubtitle: "Woman's Guild",
-            onTapTrailing: () {
+            onTapAdd: () {
               Navigator.of(context).push(CupertinoPageRoute(builder: (context) {
-                return CreateNewCalendar();
+                return const CreateNewCalendar();
+              }));
+            },
+            onTapSearch: () {
+              Navigator.of(context).push(CupertinoPageRoute(builder: (context) {
+                return const CreateNewCalendar();
               }));
             },
           ),

@@ -1,5 +1,4 @@
-import 'package:churchgroupsmanagement/forms/create_new_return.dart';
-import 'package:churchgroupsmanagement/screens/root_navigation.dart';
+import 'package:churchgroupsmanagement/screens/returns/create_new_return.dart';
 import 'package:churchgroupsmanagement/widgets/main_app_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -21,9 +20,14 @@ class _AllReturnFormsState extends State<AllReturnForms> {
           MainPageAppBar(
             pageTitle: "Expenditure Returns",
             pageSubtitle: "Woman's Guild",
-            onTapTrailing: () {
+            onTapAdd: () {
               Navigator.of(context).push(CupertinoPageRoute(builder: (context) {
-                return CreateNewReturn();
+                return const CreateNewReturn();
+              }));
+            },
+            onTapSearch: () {
+              Navigator.of(context).push(CupertinoPageRoute(builder: (context) {
+                return const CreateNewReturn();
               }));
             },
           ),

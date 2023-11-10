@@ -16,6 +16,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_zoom_drawer: ^3.1.1
   flutter_svg: ^2.0.9
+  intl: ^0.18.1
+  dropdown_search: ^5.0.6
+  cool_alert: ^2.0.1
 
 dev_dependencies:
   flutter_test:
@@ -31,6 +34,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/json/
     - assets/fonts/Poppins/
     - assets/fonts/Open_Sans/
 

@@ -18,7 +18,7 @@ class _HomeLandingScreenState extends State<HomeLandingScreen> {
           onPressed: () {
             zoomDrawerController.toggle!();
           },
-          icon: Icon(
+          icon: const Icon(
             CupertinoIcons.line_horizontal_3,
           ),
         ),

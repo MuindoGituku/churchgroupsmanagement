@@ -18,7 +18,7 @@ class _ApplicationSettingsState extends State<ApplicationSettings> {
           onPressed: () {
             zoomDrawerController.toggle!();
           },
-          icon: Icon(
+          icon: const Icon(
             CupertinoIcons.line_horizontal_3,
           ),
         ),

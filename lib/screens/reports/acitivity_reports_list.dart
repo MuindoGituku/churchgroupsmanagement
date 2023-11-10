@@ -1,5 +1,4 @@
-import 'package:churchgroupsmanagement/forms/create_new_activity_report.dart';
-import 'package:churchgroupsmanagement/screens/root_navigation.dart';
+import 'package:churchgroupsmanagement/screens/reports/create_new_activity_report.dart';
 import 'package:churchgroupsmanagement/widgets/main_app_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -21,9 +20,14 @@ class _AllActivityReportsState extends State<AllActivityReports> {
           MainPageAppBar(
             pageTitle: "Group Activity Reports",
             pageSubtitle: "Woman's Guild",
-            onTapTrailing: () {
+            onTapAdd: () {
               Navigator.of(context).push(CupertinoPageRoute(builder: (context) {
-                return CreateNewActivityReport();
+                return const CreateNewActivityReport();
+              }));
+            },
+            onTapSearch: () {
+              Navigator.of(context).push(CupertinoPageRoute(builder: (context) {
+                return const CreateNewActivityReport();
               }));
             },
           ),
