@@ -1,4 +1,5 @@
 import 'package:churchgroupsmanagement/data/sample_minutes.dart';
+import 'package:churchgroupsmanagement/screens/minutes/edit_selected_meeting.dart';
 import 'package:churchgroupsmanagement/screens/minutes/meeting_info.dart';
 import 'package:churchgroupsmanagement/services/constants.dart';
 import 'package:flutter/cupertino.dart';
@@ -319,7 +320,12 @@ class SingleMeetingAppBar extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context)
+                          .push(CupertinoPageRoute(builder: (context) {
+                        return const EditSelectedMeeting();
+                      }));
+                    },
                     child: Icon(
                       CupertinoIcons.pencil_outline,
                       color: AppDecorations().mainBlueColor,

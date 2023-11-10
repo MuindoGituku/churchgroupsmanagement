@@ -9,6 +9,7 @@ import 'package:cool_alert/cool_alert.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class CreateNewMeeting extends StatefulWidget {
   const CreateNewMeeting({super.key});
@@ -23,7 +24,6 @@ class _CreateNewMeetingState extends State<CreateNewMeeting> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).canvasColor,
       body: Column(
         children: [
           const DocumentFormAppBar(
@@ -183,69 +183,146 @@ class NewMeetingMinutes extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            CoolAlert.show(
-              context: context,
-              type: CoolAlertType.custom,
+            showDialog(
               barrierDismissible: false,
-              showCancelBtn: true,
-              cancelBtnText: "Discard",
-              lottieAsset: "assets/json/add.json",
-              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-              loopAnimation: true,
-              cancelBtnTextStyle: const TextStyle(
-                fontFamily: "Poppins",
-                fontWeight: FontWeight.bold,
-                color: Colors.red,
-              ),
-              confirmBtnText: "Add",
-              confirmBtnColor: AppDecorations().mainBlueColor,
-              confirmBtnTextStyle: const TextStyle(
-                fontFamily: "Poppins",
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-              widget: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    "Add New Minute",
-                    style: TextStyle(
-                      fontFamily: "Poppins",
-                      fontWeight: FontWeight.bold,
-                      height: 2,
-                    ),
+              context: context,
+              builder: (context) {
+                return Dialog(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 20),
-                    child: DropdownSearch(
-                      items: sampleAgendas + ["Closing Remarks"],
-                      dropdownDecoratorProps: DropDownDecoratorProps(
-                        baseStyle: const TextStyle(
-                          height: 1,
-                          fontSize: 13,
+                  insetPadding: EdgeInsets.fromLTRB(15, 30, 15, 30),
+                  alignment: Alignment.topCenter,
+                  clipBehavior: Clip.hardEdge,
+                  backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                  surfaceTintColor: Colors.transparent,
+                  child: IntrinsicHeight(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: double.maxFinite,
+                          height: MediaQuery.of(context).size.height * .2,
+                          decoration: BoxDecoration(
+                            color: Color(0xFF515C6F),
+                          ),
+                          child: Lottie.asset(
+                            'assets/json/add.json',
+                            width: MediaQuery.of(context).size.width * 0.1,
+                          ),
                         ),
-                        dropdownSearchDecoration:
-                            AppDecorations().inputDecoration1(
-                          fieldLabel: "Agenda on Focus",
-                          fieldHelper:
-                              "Select the appropriate agenda to discuss about",
-                          fieldIcon: CupertinoIcons.alt,
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
+                            child: SingleChildScrollView(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    "Add New Minute",
+                                    style: TextStyle(
+                                      fontFamily: "Poppins",
+                                      fontWeight: FontWeight.bold,
+                                      height: 2,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(0, 10, 0, 20),
+                                    child: DropdownSearch(
+                                      items: sampleAgendas,
+                                      dropdownDecoratorProps:
+                                          DropDownDecoratorProps(
+                                        baseStyle: const TextStyle(
+                                          height: 1,
+                                          fontSize: 13,
+                                        ),
+                                        dropdownSearchDecoration:
+                                            AppDecorations().inputDecoration1(
+                                          fieldLabel: "Agenda on Focus",
+                                          fieldHelper:
+                                              "Select the appropriate agenda to be discussed at the moment",
+                                          fieldIcon: CupertinoIcons.alt,
+                                        ),
+                                      ),
+                                      popupProps: PopupProps.modalBottomSheet(
+                                        fit: FlexFit.loose,
+                                        listViewProps: ListViewProps(
+                                          padding: EdgeInsets.fromLTRB(
+                                              10, 10, 15, 10),
+                                        ),
+                                        modalBottomSheetProps:
+                                            ModalBottomSheetProps(
+                                          clipBehavior: Clip.hardEdge,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  const Padding(
+                                    padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
+                                    child: IconTextField(
+                                      fieldLabel: "Minute Discussion",
+                                      fieldHelper:
+                                          "Provide details about all the issues discussed in regards to this agenda",
+                                      fieldIcon: CupertinoIcons.text_cursor,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(0, 0, 10, 20),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.of(context).pop(),
+                                          child: Text(
+                                            "Discard Changes",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.red,
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(width: 20),
+                                        ElevatedButton(
+                                          onPressed: () =>
+                                              Navigator.of(context).pop(),
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor:
+                                                AppDecorations().mainBlueColor,
+                                            padding: EdgeInsets.fromLTRB(
+                                                15, 7, 15, 7),
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                            ),
+                                          ),
+                                          child: Text(
+                                            "Add Minute",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                      popupProps: const PopupProps.modalBottomSheet(),
+                      ],
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-                    child: IconTextField(
-                      fieldLabel: "Minute Details",
-                      fieldHelper:
-                          "Provide all the details discussed in regards to this minute",
-                      fieldIcon: CupertinoIcons.text_cursor,
-                    ),
-                  ),
-                ],
-              ),
+                );
+              },
             );
           },
           child: Container(
@@ -265,7 +342,7 @@ class NewMeetingMinutes extends StatelessWidget {
                 ),
                 SizedBox(width: 10),
                 Text(
-                  "Add New Minute",
+                  "Add Meeting Minute",
                   style: TextStyle(
                     fontFamily: "Poppins",
                     fontWeight: FontWeight.bold,
@@ -336,48 +413,110 @@ class NewMeetingAgenda extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            CoolAlert.show(
-              context: context,
-              type: CoolAlertType.custom,
+            showDialog(
               barrierDismissible: false,
-              showCancelBtn: true,
-              cancelBtnText: "Discard",
-              lottieAsset: "assets/json/add.json",
-              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-              loopAnimation: true,
-              cancelBtnTextStyle: const TextStyle(
-                fontFamily: "Poppins",
-                fontWeight: FontWeight.bold,
-                color: Colors.red,
-              ),
-              confirmBtnText: "Add",
-              confirmBtnColor: AppDecorations().mainBlueColor,
-              confirmBtnTextStyle: const TextStyle(
-                fontFamily: "Poppins",
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-              widget: const Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Add New Agenda",
-                    style: TextStyle(
-                      fontFamily: "Poppins",
-                      fontWeight: FontWeight.bold,
-                      height: 2,
+              context: context,
+              builder: (context) {
+                return Dialog(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  insetPadding: EdgeInsets.fromLTRB(15, 30, 15, 30),
+                  alignment: Alignment.center,
+                  clipBehavior: Clip.hardEdge,
+                  backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                  surfaceTintColor: Colors.transparent,
+                  child: IntrinsicHeight(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: double.maxFinite,
+                          height: MediaQuery.of(context).size.height * .2,
+                          decoration: BoxDecoration(
+                            color: Color(0xFF515C6F),
+                          ),
+                          child: Lottie.asset(
+                            'assets/json/add.json',
+                            width: MediaQuery.of(context).size.width * 0.1,
+                          ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
+                            child: SingleChildScrollView(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    "Add New Agenda",
+                                    style: TextStyle(
+                                      fontFamily: "Poppins",
+                                      fontWeight: FontWeight.bold,
+                                      height: 2,
+                                    ),
+                                  ),
+                                  const Padding(
+                                    padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
+                                    child: IconTextField(
+                                      fieldLabel: "Agenda Title",
+                                      fieldHelper:
+                                          "Enter the title of the agenda to be discussed on the meeting",
+                                      fieldIcon: CupertinoIcons.textformat,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(0, 0, 10, 20),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.of(context).pop(),
+                                          child: Text(
+                                            "Discard Changes",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.red,
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(width: 20),
+                                        ElevatedButton(
+                                          onPressed: () =>
+                                              Navigator.of(context).pop(),
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor:
+                                                AppDecorations().mainBlueColor,
+                                            padding: EdgeInsets.fromLTRB(
+                                                15, 7, 15, 7),
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                            ),
+                                          ),
+                                          child: Text(
+                                            "Add Agenda",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-                    child: IconTextField(
-                      fieldLabel: "Agenda Title",
-                      fieldHelper: "Enter a title for this minute agenda",
-                      fieldIcon: CupertinoIcons.textformat,
-                    ),
-                  ),
-                ],
-              ),
+                );
+              },
             );
           },
           child: Container(
@@ -486,7 +625,7 @@ class _NewMeetingAttendanceState extends State<NewMeetingAttendance> {
     "Vice Treasurer",
     "Organiser",
     "Church School Rep",
-    "Council Member",
+    "Member",
     "Other",
   ];
   List<String> meetingAttendance = [
@@ -502,88 +641,182 @@ class _NewMeetingAttendanceState extends State<NewMeetingAttendance> {
       children: [
         GestureDetector(
           onTap: () {
-            CoolAlert.show(
-              context: context,
-              type: CoolAlertType.custom,
+            showDialog(
               barrierDismissible: false,
-              showCancelBtn: true,
-              cancelBtnText: "Discard",
-              lottieAsset: "assets/json/add_person.json",
-              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-              loopAnimation: true,
-              cancelBtnTextStyle: const TextStyle(
-                fontFamily: "Poppins",
-                fontWeight: FontWeight.bold,
-                color: Colors.red,
-              ),
-              confirmBtnText: "Add",
-              confirmBtnColor: AppDecorations().mainBlueColor,
-              confirmBtnTextStyle: const TextStyle(
-                fontFamily: "Poppins",
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-              widget: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    "Add New Attendance",
-                    style: TextStyle(
-                      fontFamily: "Poppins",
-                      fontWeight: FontWeight.bold,
-                      height: 2,
+              context: context,
+              builder: (context) {
+                return Dialog(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  insetPadding: EdgeInsets.fromLTRB(15, 30, 15, 30),
+                  alignment: Alignment.topCenter,
+                  clipBehavior: Clip.hardEdge,
+                  backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                  surfaceTintColor: Colors.transparent,
+                  child: IntrinsicHeight(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: double.maxFinite,
+                          height: MediaQuery.of(context).size.height * .2,
+                          decoration: BoxDecoration(
+                            color: Color(0xFF515C6F),
+                          ),
+                          child: Lottie.asset(
+                            'assets/json/add.json',
+                            width: MediaQuery.of(context).size.width * 0.1,
+                          ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
+                            child: SingleChildScrollView(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    "Add New Attendance",
+                                    style: TextStyle(
+                                      fontFamily: "Poppins",
+                                      fontWeight: FontWeight.bold,
+                                      height: 2,
+                                    ),
+                                  ),
+                                  const Padding(
+                                    padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
+                                    child: IconTextField(
+                                      fieldLabel: "Member Names",
+                                      fieldHelper:
+                                          "Enter the full names of the member",
+                                      fieldIcon: CupertinoIcons.person_alt,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(0, 10, 0, 20),
+                                    child: DropdownSearch(
+                                      items: memberPositions,
+                                      dropdownDecoratorProps:
+                                          DropDownDecoratorProps(
+                                        baseStyle: const TextStyle(
+                                          height: 1,
+                                          fontSize: 13,
+                                        ),
+                                        dropdownSearchDecoration:
+                                            AppDecorations().inputDecoration1(
+                                          fieldLabel: "Member Position",
+                                          fieldHelper:
+                                              "Select the appropriate position for this member",
+                                          fieldIcon: CupertinoIcons.alt,
+                                        ),
+                                      ),
+                                      popupProps: PopupProps.modalBottomSheet(
+                                        fit: FlexFit.loose,
+                                        listViewProps: ListViewProps(
+                                          padding: EdgeInsets.fromLTRB(
+                                              10, 10, 15, 10),
+                                        ),
+                                        modalBottomSheetProps:
+                                            ModalBottomSheetProps(
+                                          clipBehavior: Clip.hardEdge,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(0, 10, 0, 20),
+                                    child: DropdownSearch(
+                                      items: meetingAttendance,
+                                      dropdownDecoratorProps:
+                                          DropDownDecoratorProps(
+                                        baseStyle: const TextStyle(
+                                          height: 1,
+                                          fontSize: 13,
+                                        ),
+                                        dropdownSearchDecoration:
+                                            AppDecorations().inputDecoration1(
+                                          fieldLabel: "Meeting Presence",
+                                          fieldHelper:
+                                              "Select whether this member is present for the meeting or not",
+                                          fieldIcon: CupertinoIcons.eye,
+                                        ),
+                                      ),
+                                      popupProps: PopupProps.modalBottomSheet(
+                                        fit: FlexFit.loose,
+                                        listViewProps: ListViewProps(
+                                          padding: EdgeInsets.fromLTRB(
+                                              10, 10, 15, 10),
+                                        ),
+                                        modalBottomSheetProps:
+                                            ModalBottomSheetProps(
+                                          clipBehavior: Clip.hardEdge,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(0, 0, 10, 20),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.of(context).pop(),
+                                          child: Text(
+                                            "Discard Changes",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.red,
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(width: 20),
+                                        ElevatedButton(
+                                          onPressed: () =>
+                                              Navigator.of(context).pop(),
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor:
+                                                AppDecorations().mainBlueColor,
+                                            padding: EdgeInsets.fromLTRB(
+                                                15, 7, 15, 7),
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                            ),
+                                          ),
+                                          child: Text(
+                                            "Add Attendance",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-                    child: IconTextField(
-                      fieldLabel: "Member Names",
-                      fieldHelper: "Enter the full names of the member",
-                      fieldIcon: CupertinoIcons.person_alt,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 20),
-                    child: DropdownSearch(
-                      items: memberPositions,
-                      dropdownDecoratorProps: DropDownDecoratorProps(
-                        baseStyle: const TextStyle(
-                          height: 1,
-                          fontSize: 13,
-                        ),
-                        dropdownSearchDecoration:
-                            AppDecorations().inputDecoration1(
-                          fieldLabel: "Member Position",
-                          fieldHelper:
-                              "Select the appropriate position for this member",
-                          fieldIcon: CupertinoIcons.alt,
-                        ),
-                      ),
-                      popupProps: const PopupProps.modalBottomSheet(),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 20),
-                    child: DropdownSearch(
-                      items: meetingAttendance,
-                      dropdownDecoratorProps: DropDownDecoratorProps(
-                        baseStyle: const TextStyle(
-                          height: 1,
-                          fontSize: 13,
-                        ),
-                        dropdownSearchDecoration:
-                            AppDecorations().inputDecoration1(
-                          fieldLabel: "Meeting Presence",
-                          fieldHelper:
-                              "Select whether this member is present for the meeting or not",
-                          fieldIcon: CupertinoIcons.eye,
-                        ),
-                      ),
-                      popupProps: const PopupProps.modalBottomSheet(),
-                    ),
-                  ),
-                ],
-              ),
+                );
+              },
             );
           },
           child: Container(
@@ -884,7 +1117,88 @@ class NewMeetingInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Column(
-      children: [],
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "These are the steps to create a new meeting entry for this group. You can save the progress at any point as a draft to be completed later then shared to other officials.",
+          style: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
+          child: Text(
+            "1. Meeting Info",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 12,
+              height: 1.5,
+            ),
+          ),
+        ),
+        Text(
+          "Enter the basic information about this meeting, including the meeting title, the venue where the meeting took place, and the date and time when the meeting was held.",
+          style: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
+          child: Text(
+            "2. Officials Attendance",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 12,
+              height: 1.5,
+            ),
+          ),
+        ),
+        Text(
+          "To add a new entry to the meeting attendance register, click on the Add New Attendance button. Fill in the full names of the official, then select the position they hold in the group/meeting, and then select the appropriate attendance i.e. Present, Absent With Apology or Absent Without Apology. Once done, click the add button and the member will appear on the appropriate list.",
+          style: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
+          child: Text(
+            "3. Meeting Agenda",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 12,
+              height: 1.5,
+            ),
+          ),
+        ),
+        Text(
+          "To add a new agenda to the meeting, click on the Add New Agenda button. Enter the title of the Agenda onto the entry field. Once done, click the add button and the agenda will appear on the list.",
+          style: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
+          child: Text(
+            "4. Meeting Minutes",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 12,
+              height: 1.5,
+            ),
+          ),
+        ),
+        Text(
+          "To add a new entry to the meeting minutes, click on the Add New Minute button. Select an agenda to be discussed from the list of previously entered agendas. Then discuss the agenda at length addressing all the issues that were discussed regarding it. Once done, click the add button and the minute will appear on the list.",
+          style: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+      ],
     );
   }
 }

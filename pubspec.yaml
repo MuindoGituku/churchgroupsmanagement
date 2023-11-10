@@ -19,6 +19,7 @@ dependencies:
   intl: ^0.18.1
   dropdown_search: ^5.0.6
   cool_alert: ^2.0.1
+  lottie: ^2.7.0
 
 dev_dependencies:
   flutter_test:

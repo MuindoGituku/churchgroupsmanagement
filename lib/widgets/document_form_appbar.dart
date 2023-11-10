@@ -6,10 +6,12 @@ class DocumentFormAppBar extends StatelessWidget {
     super.key,
     required this.formHeading,
     required this.formSubHeading,
+    this.showSecondaryButton = true,
   });
 
   final String formHeading;
   final String formSubHeading;
+  final bool? showSecondaryButton;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +50,9 @@ class DocumentFormAppBar extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      width: ScreenDimension().screenWidth(context) * 0.50,
+                      width: showSecondaryButton!
+                          ? ScreenDimension().screenWidth(context) * 0.53
+                          : ScreenDimension().screenWidth(context) * 0.75,
                       child: Text(
                         formHeading,
                         maxLines: 1,
@@ -62,7 +66,9 @@ class DocumentFormAppBar extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      width: ScreenDimension().screenWidth(context) * 0.53,
+                      width: showSecondaryButton!
+                          ? ScreenDimension().screenWidth(context) * 0.53
+                          : ScreenDimension().screenWidth(context) * 0.75,
                       child: Text(
                         formSubHeading,
                         maxLines: 1,
@@ -78,27 +84,29 @@ class DocumentFormAppBar extends StatelessWidget {
                 ),
               ],
             ),
-            GestureDetector(
-              onTap: () => Navigator.of(context).pop(),
-              child: Container(
-                padding: const EdgeInsets.fromLTRB(10, 7, 10, 7),
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: AppDecorations().mainBlueColor,
-                  ),
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: Text(
-                  "Save Draft",
-                  style: TextStyle(
-                    fontFamily: "Poppins",
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14,
-                    color: AppDecorations().mainBlueColor,
-                  ),
-                ),
-              ),
-            ),
+            showSecondaryButton!
+                ? GestureDetector(
+                    onTap: () => Navigator.of(context).pop(),
+                    child: Container(
+                      padding: const EdgeInsets.fromLTRB(10, 7, 10, 7),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: AppDecorations().mainBlueColor,
+                        ),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Text(
+                        "Save Draft",
+                        style: TextStyle(
+                          fontFamily: "Poppins",
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14,
+                          color: AppDecorations().mainBlueColor,
+                        ),
+                      ),
+                    ),
+                  )
+                : SizedBox(),
           ],
         ),
       ),
