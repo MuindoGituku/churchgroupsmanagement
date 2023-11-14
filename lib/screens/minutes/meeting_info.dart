@@ -29,7 +29,7 @@ class _SingleMeetingInfoState extends State<SingleMeetingInfo>
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          DocumentFormAppBar(
+          const DocumentFormAppBar(
             formHeading: "Audit Committee Meeting",
             formSubHeading: "Last updated on Sun, 21st Nov 2023 at 4pm",
             showSecondaryButton: false,

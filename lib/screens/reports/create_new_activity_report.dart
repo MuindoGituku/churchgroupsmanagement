@@ -1,8 +1,11 @@
+
+import 'package:churchgroupsmanagement/services/constants.dart';
 import 'package:churchgroupsmanagement/widgets/document_form_appbar.dart';
 import 'package:churchgroupsmanagement/widgets/stepper_buttons.dart';
 import 'package:churchgroupsmanagement/widgets/text_form_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class CreateNewActivityReport extends StatefulWidget {
   const CreateNewActivityReport({super.key});
@@ -346,6 +349,158 @@ class NewActivityReportFiles extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    List<String> possibleDocuments = [
+      "assets/images/doc_file.png",
+      //"assets/images/error_file.png",
+      //"assets/images/gen_file.png",
+      "assets/images/jpg_file.png",
+      "assets/images/pdf_file.png",
+      "assets/images/png_file.png",
+      //"assets/images/wait_file.png",
+    ];
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        GestureDetector(
+          onTap: () {
+            showModalBottomSheet(
+              context: context,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(15),
+                ),
+              ),
+              clipBehavior: Clip.hardEdge,
+              builder: (context) {
+                return IntrinsicHeight(
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(
+                      15,
+                      15,
+                      15,
+                      MediaQuery.of(context).padding.bottom + 10,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).scaffoldBackgroundColor,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        GestureDetector(
+                          onTap: () => Navigator.of(context).pop(),
+                          child: Column(
+                            children: [
+                              CircleAvatar(
+                                backgroundColor: AppDecorations().mainBlueColor,
+                                radius: 30,
+                                child: const Icon(
+                                  CupertinoIcons.camera,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              const Text(
+                                "Open Camera",
+                                style: TextStyle(
+                                  fontFamily: "Poppins",
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () => Navigator.of(context).pop(),
+                          child: Column(
+                            children: [
+                              CircleAvatar(
+                                backgroundColor: AppDecorations().mainBlueColor,
+                                radius: 30,
+                                child: const Icon(
+                                  CupertinoIcons.photo,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              const Text(
+                                "Browse Storage",
+                                style: TextStyle(
+                                  fontFamily: "Poppins",
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            );
+          },
+          child: Container(
+            margin: const EdgeInsets.only(bottom: 15),
+            padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: AppDecorations().mainBlueColor,
+            ),
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Icon(
+                  CupertinoIcons.add,
+                  color: Colors.white,
+                ),
+                SizedBox(width: 10),
+                Text(
+                  "Add New Attatchment",
+                  style: TextStyle(
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        GridView.custom(
+          shrinkWrap: true,
+          padding: EdgeInsets.zero,
+          physics: const NeverScrollableScrollPhysics(),
+          gridDelegate: SliverWovenGridDelegate.count(
+            crossAxisCount: 3,
+            mainAxisSpacing: 8,
+            crossAxisSpacing: 8,
+            pattern: [
+              const WovenGridTile(1),
+              const WovenGridTile(
+                5 / 7,
+                crossAxisRatio: 0.9,
+                alignment: AlignmentDirectional.centerEnd,
+              ),
+            ],
+          ),
+          childrenDelegate: SliverChildBuilderDelegate(
+            childCount: possibleDocuments.length,
+            (context, index) => Container(
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(149, 206, 205, 205),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Center(
+                child: Image.asset(
+                  possibleDocuments[index],
+                  width: 65,
+                ),
+              ),
+            ),
+          ),
+        )
+      ],
+    );
   }
 }

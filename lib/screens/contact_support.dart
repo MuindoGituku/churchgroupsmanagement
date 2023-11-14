@@ -2,14 +2,14 @@ import 'package:churchgroupsmanagement/screens/root_navigation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ApplicationSettings extends StatefulWidget {
-  const ApplicationSettings({super.key});
+class ContactSupport extends StatefulWidget {
+  const ContactSupport({super.key});
 
   @override
-  State<ApplicationSettings> createState() => _ApplicationSettingsState();
+  State<ContactSupport> createState() => _ContactSupportState();
 }
 
-class _ApplicationSettingsState extends State<ApplicationSettings> {
+class _ContactSupportState extends State<ContactSupport> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

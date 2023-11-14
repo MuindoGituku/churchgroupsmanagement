@@ -106,7 +106,7 @@ class DocumentFormAppBar extends StatelessWidget {
                       ),
                     ),
                   )
-                : SizedBox(),
+                : const SizedBox(),
           ],
         ),
       ),

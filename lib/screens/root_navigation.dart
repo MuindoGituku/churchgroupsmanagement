@@ -1,9 +1,12 @@
+import 'package:churchgroupsmanagement/screens/contact_support.dart';
+import 'package:churchgroupsmanagement/screens/home_landing_screen.dart';
 import 'package:churchgroupsmanagement/screens/reports/acitivity_reports_list.dart';
 import 'package:churchgroupsmanagement/screens/budgets/budgets_list.dart';
 import 'package:churchgroupsmanagement/screens/calendars/calendar_events_list.dart';
 import 'package:churchgroupsmanagement/screens/minutes/minutes_list.dart';
 import 'package:churchgroupsmanagement/screens/requisitions/requisitions_list.dart';
 import 'package:churchgroupsmanagement/screens/returns/returns_list.dart';
+import 'package:churchgroupsmanagement/screens/settings_security.dart';
 import 'package:churchgroupsmanagement/services/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -38,6 +41,7 @@ class _AppRootNavigationState extends State<AppRootNavigation> {
         },
       ),
       mainScreen: getSelectedScreen(),
+      mainScreenOverlayColor: Colors.black.withOpacity(0.5),
       controller: zoomDrawerController,
       borderRadius: 30,
       style: DrawerStyle.style1,
@@ -56,19 +60,25 @@ class _AppRootNavigationState extends State<AppRootNavigation> {
   Widget getSelectedScreen() {
     switch (currentSelectedScreen) {
       case 0:
-        return const AllGroupMinutes();
+        return const HomeLandingScreen();
       case 1:
-        return const AllActivityReports();
+        return const SettingsSecurity();
       case 2:
-        return const AllCalendarEvents();
+        return const ContactSupport();
       case 3:
-        return const AllGroupBudgets();
+        return const AllGroupMinutes();
       case 4:
-        return const AllExpenseRequisitions();
+        return const AllActivityReports();
       case 5:
+        return const AllCalendarEvents();
+      case 6:
+        return const AllGroupBudgets();
+      case 7:
+        return const AllExpenseRequisitions();
+      case 8:
         return const AllReturnForms();
       default:
-        return const AllGroupMinutes();
+        return const HomeLandingScreen();
     }
   }
 }
@@ -85,43 +95,123 @@ class ZoomMenuScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      elevation: 10,
-      color: AppDecorations().mainBlueColor,
-      child: Column(
-        children: <Widget>[
-          const Spacer(),
-          ...appMenuItemsList
-              .map((item) => buildMenuItem(
-                    item,
-                    appMenuItemsList.indexOf(item),
-                  ))
-              .toList(),
-          const Spacer(),
-        ],
+    return Scaffold(
+      body: Padding(
+        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+        child: Column(
+          children: [
+            SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  const SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(15, 0, 10, 10),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Image.asset(
+                          "assets/icons/user.png",
+                          width: 35,
+                          height: 35,
+                        ),
+                        const SizedBox(width: 15),
+                        const Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Isabel Ramirez",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontFamily: "Poppins",
+                                height: 1.5,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 66, 65, 65),
+                              ),
+                            ),
+                            Text(
+                              "Secretary - Woman's Guild",
+                              style: TextStyle(
+                                fontSize: 13,
+                                height: 2,
+                                fontWeight: FontWeight.w400,
+                                color: Color.fromARGB(255, 66, 65, 65),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  buildMenuItem(appMenuItemsList[0], 0),
+                  const SizedBox(height: 10),
+                  const Divider(),
+                  const SizedBox(height: 10),
+                  buildMenuItem(appMenuItemsList[1], 1),
+                  buildMenuItem(appMenuItemsList[2], 2),
+                  const SizedBox(height: 10),
+                  const Divider(),
+                  const SizedBox(height: 10),
+                  ...appMenuItemsList
+                      .skip(3)
+                      .map((item) => buildMenuItem(
+                            item,
+                            appMenuItemsList.indexOf(item),
+                          ))
+                      .toList(),
+                  const SizedBox(height: 10),
+                  const Divider(),
+                  const SizedBox(height: 10),
+                ],
+              ),
+            ),
+            const Spacer(),
+            Padding(
+              padding: EdgeInsets.fromLTRB(
+                15,
+                0,
+                15,
+                MediaQuery.of(context).padding.bottom + 10,
+              ),
+              child: Container(
+                width: double.maxFinite,
+                padding: const EdgeInsets.symmetric(vertical: 15),
+                decoration: BoxDecoration(
+                  color: AppDecorations().mainBlueColor,
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: const Text(
+                  "Sign out",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
   Widget buildMenuItem(MenuItem menuItem, int menuItemIndex) {
     return ListTileTheme(
-      selectedTileColor: const Color.fromARGB(255, 110, 117, 131),
-      textColor: Colors.white,
-      selectedColor: Colors.white,
+      selectedTileColor: const Color.fromARGB(255, 226, 226, 230),
+      textColor: const Color.fromARGB(255, 66, 65, 65),
+      selectedColor: AppDecorations().mainBlueColor,
       child: ListTile(
+        visualDensity: VisualDensity.comfortable,
         selected: currentSelectedScreen == menuItemIndex,
-        leading: Image.asset(
-          menuItem.selectedIcon,
-          width: 20,
-          height: 20,
-        ),
         title: Text(
           menuItem.itemTitle,
-          style: TextStyle(
+          style: const TextStyle(
+            fontSize: 14,
             fontFamily: "Poppins",
-            fontWeight: currentSelectedScreen == menuItemIndex
-                ? FontWeight.bold
-                : FontWeight.normal,
+            fontWeight: FontWeight.w500,
           ),
         ),
         onTap: () => onSelectedMenuItem(menuItemIndex),
@@ -157,37 +247,38 @@ class _ZoomMainScreenState extends State<ZoomMainScreen> {
 
 List<MenuItem> appMenuItemsList = <MenuItem>[
   MenuItem(
+    itemTitle: "Home",
+  ),
+  MenuItem(
+    itemTitle: "Settings and Security",
+  ),
+  MenuItem(
+    itemTitle: "Contact Support",
+  ),
+  MenuItem(
     itemTitle: "Meeting Minutes",
-    selectedIcon: "assets/icons/minutes_color.png",
   ),
   MenuItem(
     itemTitle: "Group Activity Reports",
-    selectedIcon: "assets/icons/activity_color.png",
   ),
   MenuItem(
     itemTitle: "Calendar of Events",
-    selectedIcon: "assets/icons/calendar_color.png",
   ),
   MenuItem(
     itemTitle: "Group Budget",
-    selectedIcon: "assets/icons/budget_color.png",
   ),
   MenuItem(
     itemTitle: "Expense Requisitions",
-    selectedIcon: "assets/icons/request_color.png",
   ),
   MenuItem(
     itemTitle: "Expenditure Returns",
-    selectedIcon: "assets/icons/return_color.png",
   ),
 ];
 
 class MenuItem {
   final String itemTitle;
-  final String selectedIcon;
 
   MenuItem({
     required this.itemTitle,
-    required this.selectedIcon,
   });
 }

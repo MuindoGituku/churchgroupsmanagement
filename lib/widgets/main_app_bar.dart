@@ -8,15 +8,19 @@ class MainPageAppBar extends StatelessWidget {
   const MainPageAppBar({
     super.key,
     required this.pageTitle,
-    required this.pageSubtitle,
-    required this.onTapSearch,
-    required this.onTapAdd,
+    this.pageSubtitle = "",
+    this.onTapSearch,
+    this.onTapAdd,
+    this.hasSubtext = true,
+    this.hasRightButtons = true,
   });
 
   final String pageTitle;
-  final String pageSubtitle;
-  final void Function() onTapSearch;
-  final void Function() onTapAdd;
+  final String? pageSubtitle;
+  final void Function()? onTapSearch;
+  final void Function()? onTapAdd;
+  final bool hasSubtext;
+  final bool hasRightButtons;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +36,8 @@ class MainPageAppBar extends StatelessWidget {
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment:
+              hasSubtext ? CrossAxisAlignment.start : CrossAxisAlignment.center,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -57,56 +62,65 @@ class MainPageAppBar extends StatelessWidget {
                 ),
                 const SizedBox(width: 15),
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: hasSubtext
+                      ? CrossAxisAlignment.start
+                      : CrossAxisAlignment.center,
                   children: [
-                    Text(
-                      pageTitle,
-                      style: const TextStyle(
-                        fontFamily: "Poppins",
-                        fontWeight: FontWeight.w800,
-                        letterSpacing: 0.7,
-                        height: 1.5,
-                        fontSize: 15,
+                    Padding(
+                      padding: EdgeInsets.only(top: hasSubtext ? 0 : 10),
+                      child: Text(
+                        pageTitle,
+                        style: const TextStyle(
+                          fontFamily: "Poppins",
+                          fontWeight: FontWeight.w800,
+                          letterSpacing: 0.7,
+                          height: 1.5,
+                          fontSize: 15,
+                        ),
                       ),
                     ),
-                    Text(
-                      pageSubtitle,
-                      style: const TextStyle(
-                        letterSpacing: 0.7,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
+                    hasSubtext
+                        ? Text(
+                            pageSubtitle!,
+                            style: const TextStyle(
+                              letterSpacing: 0.7,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          )
+                        : SizedBox(),
                   ],
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  GestureDetector(
-                    onTap: onTapSearch,
-                    child: Icon(
-                      CupertinoIcons.search,
-                      color: AppDecorations().mainBlueColor,
-                      size: 25,
+            hasRightButtons
+                ? Padding(
+                    padding: const EdgeInsets.only(top: 8),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        GestureDetector(
+                          onTap: onTapSearch!,
+                          child: Icon(
+                            CupertinoIcons.search,
+                            color: AppDecorations().mainBlueColor,
+                            size: 25,
+                          ),
+                        ),
+                        const SizedBox(width: 25),
+                        GestureDetector(
+                          onTap: onTapAdd!,
+                          child: Icon(
+                            CupertinoIcons.ellipsis_vertical,
+                            color: AppDecorations().mainBlueColor,
+                            size: 25,
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                  const SizedBox(width: 25),
-                  GestureDetector(
-                    onTap: onTapAdd,
-                    child: Icon(
-                      CupertinoIcons.ellipsis_vertical,
-                      color: AppDecorations().mainBlueColor,
-                      size: 25,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+                  )
+                : SizedBox(),
           ],
         ),
       ),

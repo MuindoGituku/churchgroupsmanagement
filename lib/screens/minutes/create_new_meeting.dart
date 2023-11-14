@@ -5,7 +5,6 @@ import 'package:churchgroupsmanagement/services/constants.dart';
 import 'package:churchgroupsmanagement/widgets/document_form_appbar.dart';
 import 'package:churchgroupsmanagement/widgets/stepper_buttons.dart';
 import 'package:churchgroupsmanagement/widgets/text_form_field.dart';
-import 'package:cool_alert/cool_alert.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -191,7 +190,7 @@ class NewMeetingMinutes extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  insetPadding: EdgeInsets.fromLTRB(15, 30, 15, 30),
+                  insetPadding: const EdgeInsets.fromLTRB(15, 30, 15, 30),
                   alignment: Alignment.topCenter,
                   clipBehavior: Clip.hardEdge,
                   backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -203,7 +202,7 @@ class NewMeetingMinutes extends StatelessWidget {
                         Container(
                           width: double.maxFinite,
                           height: MediaQuery.of(context).size.height * .2,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Color(0xFF515C6F),
                           ),
                           child: Lottie.asset(
@@ -247,7 +246,7 @@ class NewMeetingMinutes extends StatelessWidget {
                                       ),
                                       popupProps: PopupProps.modalBottomSheet(
                                         fit: FlexFit.loose,
-                                        listViewProps: ListViewProps(
+                                        listViewProps: const ListViewProps(
                                           padding: EdgeInsets.fromLTRB(
                                               10, 10, 15, 10),
                                         ),
@@ -280,7 +279,7 @@ class NewMeetingMinutes extends StatelessWidget {
                                         TextButton(
                                           onPressed: () =>
                                               Navigator.of(context).pop(),
-                                          child: Text(
+                                          child: const Text(
                                             "Discard Changes",
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
@@ -288,21 +287,21 @@ class NewMeetingMinutes extends StatelessWidget {
                                             ),
                                           ),
                                         ),
-                                        SizedBox(width: 20),
+                                        const SizedBox(width: 20),
                                         ElevatedButton(
                                           onPressed: () =>
                                               Navigator.of(context).pop(),
                                           style: ElevatedButton.styleFrom(
                                             backgroundColor:
                                                 AppDecorations().mainBlueColor,
-                                            padding: EdgeInsets.fromLTRB(
+                                            padding: const EdgeInsets.fromLTRB(
                                                 15, 7, 15, 7),
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(5.0),
                                             ),
                                           ),
-                                          child: Text(
+                                          child: const Text(
                                             "Add Minute",
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
@@ -421,7 +420,7 @@ class NewMeetingAgenda extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  insetPadding: EdgeInsets.fromLTRB(15, 30, 15, 30),
+                  insetPadding: const EdgeInsets.fromLTRB(15, 30, 15, 30),
                   alignment: Alignment.center,
                   clipBehavior: Clip.hardEdge,
                   backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -433,7 +432,7 @@ class NewMeetingAgenda extends StatelessWidget {
                         Container(
                           width: double.maxFinite,
                           height: MediaQuery.of(context).size.height * .2,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Color(0xFF515C6F),
                           ),
                           child: Lottie.asset(
@@ -474,7 +473,7 @@ class NewMeetingAgenda extends StatelessWidget {
                                         TextButton(
                                           onPressed: () =>
                                               Navigator.of(context).pop(),
-                                          child: Text(
+                                          child: const Text(
                                             "Discard Changes",
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
@@ -482,21 +481,21 @@ class NewMeetingAgenda extends StatelessWidget {
                                             ),
                                           ),
                                         ),
-                                        SizedBox(width: 20),
+                                        const SizedBox(width: 20),
                                         ElevatedButton(
                                           onPressed: () =>
                                               Navigator.of(context).pop(),
                                           style: ElevatedButton.styleFrom(
                                             backgroundColor:
                                                 AppDecorations().mainBlueColor,
-                                            padding: EdgeInsets.fromLTRB(
+                                            padding: const EdgeInsets.fromLTRB(
                                                 15, 7, 15, 7),
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(5.0),
                                             ),
                                           ),
-                                          child: Text(
+                                          child: const Text(
                                             "Add Agenda",
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
@@ -649,7 +648,7 @@ class _NewMeetingAttendanceState extends State<NewMeetingAttendance> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  insetPadding: EdgeInsets.fromLTRB(15, 30, 15, 30),
+                  insetPadding: const EdgeInsets.fromLTRB(15, 30, 15, 30),
                   alignment: Alignment.topCenter,
                   clipBehavior: Clip.hardEdge,
                   backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -661,7 +660,7 @@ class _NewMeetingAttendanceState extends State<NewMeetingAttendance> {
                         Container(
                           width: double.maxFinite,
                           height: MediaQuery.of(context).size.height * .2,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Color(0xFF515C6F),
                           ),
                           child: Lottie.asset(
@@ -714,7 +713,7 @@ class _NewMeetingAttendanceState extends State<NewMeetingAttendance> {
                                       ),
                                       popupProps: PopupProps.modalBottomSheet(
                                         fit: FlexFit.loose,
-                                        listViewProps: ListViewProps(
+                                        listViewProps: const ListViewProps(
                                           padding: EdgeInsets.fromLTRB(
                                               10, 10, 15, 10),
                                         ),
@@ -750,7 +749,7 @@ class _NewMeetingAttendanceState extends State<NewMeetingAttendance> {
                                       ),
                                       popupProps: PopupProps.modalBottomSheet(
                                         fit: FlexFit.loose,
-                                        listViewProps: ListViewProps(
+                                        listViewProps: const ListViewProps(
                                           padding: EdgeInsets.fromLTRB(
                                               10, 10, 15, 10),
                                         ),
@@ -774,7 +773,7 @@ class _NewMeetingAttendanceState extends State<NewMeetingAttendance> {
                                         TextButton(
                                           onPressed: () =>
                                               Navigator.of(context).pop(),
-                                          child: Text(
+                                          child: const Text(
                                             "Discard Changes",
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
@@ -782,21 +781,21 @@ class _NewMeetingAttendanceState extends State<NewMeetingAttendance> {
                                             ),
                                           ),
                                         ),
-                                        SizedBox(width: 20),
+                                        const SizedBox(width: 20),
                                         ElevatedButton(
                                           onPressed: () =>
                                               Navigator.of(context).pop(),
                                           style: ElevatedButton.styleFrom(
                                             backgroundColor:
                                                 AppDecorations().mainBlueColor,
-                                            padding: EdgeInsets.fromLTRB(
+                                            padding: const EdgeInsets.fromLTRB(
                                                 15, 7, 15, 7),
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(5.0),
                                             ),
                                           ),
-                                          child: Text(
+                                          child: const Text(
                                             "Add Attendance",
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
