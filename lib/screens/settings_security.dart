@@ -1,7 +1,5 @@
-import 'package:churchgroupsmanagement/screens/root_navigation.dart';
 import 'package:churchgroupsmanagement/services/constants.dart';
 import 'package:churchgroupsmanagement/widgets/main_app_bar.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -19,7 +17,7 @@ class _SettingsSecurityState extends State<SettingsSecurity> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          MainPageAppBar(
+          const MainPageAppBar(
             pageTitle: "Settings & Security",
             hasRightButtons: false,
             hasSubtext: false,

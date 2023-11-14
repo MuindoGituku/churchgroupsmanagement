@@ -88,7 +88,7 @@ class MainPageAppBar extends StatelessWidget {
                               fontWeight: FontWeight.w500,
                             ),
                           )
-                        : SizedBox(),
+                        : const SizedBox(),
                   ],
                 ),
               ],
@@ -111,16 +111,16 @@ class MainPageAppBar extends StatelessWidget {
                         const SizedBox(width: 25),
                         GestureDetector(
                           onTap: onTapAdd!,
-                          child: Icon(
-                            CupertinoIcons.ellipsis_vertical,
+                          child: Image.asset(
+                            "assets/icons/people.png",
                             color: AppDecorations().mainBlueColor,
-                            size: 25,
+                            width: 25,
                           ),
                         ),
                       ],
                     ),
                   )
-                : SizedBox(),
+                : const SizedBox(),
           ],
         ),
       ),

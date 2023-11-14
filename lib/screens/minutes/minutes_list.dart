@@ -1,6 +1,5 @@
 import 'package:churchgroupsmanagement/screens/minutes/create_new_meeting.dart';
 import 'package:churchgroupsmanagement/screens/minutes/approved_minutes.dart';
-import 'package:churchgroupsmanagement/screens/minutes/draft_minutes.dart';
 import 'package:churchgroupsmanagement/screens/minutes/prepared_minutes.dart';
 import 'package:churchgroupsmanagement/services/constants.dart';
 import 'package:churchgroupsmanagement/widgets/main_app_bar.dart';
@@ -22,7 +21,7 @@ class _AllGroupMinutesState extends State<AllGroupMinutes>
   void initState() {
     super.initState();
 
-    tabController = TabController(length: 3, vsync: this);
+    tabController = TabController(length: 2, vsync: this);
   }
 
   @override
@@ -82,9 +81,6 @@ class _AllGroupMinutesState extends State<AllGroupMinutes>
                 Tab(
                   text: "Prepared",
                 ),
-                Tab(
-                  text: "Drafts",
-                ),
               ],
               unselectedLabelStyle: const TextStyle(
                 fontWeight: FontWeight.w500,
@@ -106,7 +102,6 @@ class _AllGroupMinutesState extends State<AllGroupMinutes>
               children: const [
                 ApprovedMinutesList(),
                 PreparedMinutesList(),
-                DraftMinutesList(),
               ],
             ),
           ),

@@ -200,16 +200,31 @@ class ZoomMenuScreen extends StatelessWidget {
 
   Widget buildMenuItem(MenuItem menuItem, int menuItemIndex) {
     return ListTileTheme(
-      selectedTileColor: const Color.fromARGB(255, 226, 226, 230),
+      selectedTileColor: Color.fromARGB(255, 230, 229, 229),
       textColor: const Color.fromARGB(255, 66, 65, 65),
       selectedColor: AppDecorations().mainBlueColor,
       child: ListTile(
-        visualDensity: VisualDensity.comfortable,
+        horizontalTitleGap:
+            menuItem.itemIcon != null && menuItem.selectedItemIcon != null
+                ? 10
+                : -20,
+        visualDensity: VisualDensity.compact,
         selected: currentSelectedScreen == menuItemIndex,
+        leading: menuItem.itemIcon != null && menuItem.selectedItemIcon != null
+            ? Icon(
+                currentSelectedScreen == menuItemIndex
+                    ? menuItem.selectedItemIcon
+                    : menuItem.itemIcon,
+                color: currentSelectedScreen == menuItemIndex
+                    ? AppDecorations().mainBlueColor
+                    : Colors.black,
+                size: 18,
+              )
+            : SizedBox(),
         title: Text(
           menuItem.itemTitle,
           style: const TextStyle(
-            fontSize: 14,
+            fontSize: 13,
             fontFamily: "Poppins",
             fontWeight: FontWeight.w500,
           ),
@@ -220,41 +235,19 @@ class ZoomMenuScreen extends StatelessWidget {
   }
 }
 
-class ZoomMainScreen extends StatefulWidget {
-  const ZoomMainScreen({super.key});
-
-  @override
-  State<ZoomMainScreen> createState() => _ZoomMainScreenState();
-}
-
-class _ZoomMainScreenState extends State<ZoomMainScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            zoomDrawerController.toggle!();
-          },
-          icon: const Icon(
-            CupertinoIcons.line_horizontal_3,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
 List<MenuItem> appMenuItemsList = <MenuItem>[
   MenuItem(
-    itemTitle: "Home",
-  ),
+      itemTitle: "Home",
+      itemIcon: CupertinoIcons.house_alt,
+      selectedItemIcon: CupertinoIcons.house_alt_fill),
   MenuItem(
-    itemTitle: "Settings and Security",
-  ),
+      itemTitle: "Settings and Security",
+      itemIcon: CupertinoIcons.gear_alt,
+      selectedItemIcon: CupertinoIcons.gear_alt_fill),
   MenuItem(
-    itemTitle: "Contact Support",
-  ),
+      itemTitle: "Contact Support",
+      itemIcon: CupertinoIcons.chat_bubble_2,
+      selectedItemIcon: CupertinoIcons.chat_bubble_2_fill),
   MenuItem(
     itemTitle: "Meeting Minutes",
   ),
@@ -277,8 +270,12 @@ List<MenuItem> appMenuItemsList = <MenuItem>[
 
 class MenuItem {
   final String itemTitle;
+  final IconData? itemIcon;
+  final IconData? selectedItemIcon;
 
   MenuItem({
     required this.itemTitle,
+    this.itemIcon,
+    this.selectedItemIcon,
   });
 }
