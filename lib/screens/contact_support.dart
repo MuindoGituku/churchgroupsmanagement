@@ -1,5 +1,6 @@
 import 'package:churchgroupsmanagement/data/sample_chat.dart';
 import 'package:churchgroupsmanagement/screens/root_navigation.dart';
+import 'package:churchgroupsmanagement/screens/support_chat.dart';
 import 'package:churchgroupsmanagement/services/constants.dart';
 import 'package:churchgroupsmanagement/widgets/main_app_bar.dart';
 import 'package:flutter/cupertino.dart';
@@ -27,212 +28,107 @@ class _ContactSupportState extends State<ContactSupport> {
             pageSubtitle: "Open a chat with an IT Consultant",
           ),
           Expanded(
-            child: SingleChildScrollView(
-              padding: EdgeInsets.zero,
-              child: Column(
-                children: [
-                  ...sampleConsultationChat.map(
-                    (eachMessage) {
-                      return eachMessage["sender"] == "Isabel"
-                          ? Padding(
-                              padding: const EdgeInsets.fromLTRB(15, 10, 5, 5),
-                              child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Image.asset(
-                                      "assets/icons/user.png",
-                                      width: 25,
-                                      height: 25,
-                                    ),
-                                    const SizedBox(width: 10),
-                                    Container(
-                                      padding: EdgeInsets.all(5),
-                                      width: ScreenDimension()
-                                              .screenWidth(context) *
-                                          .8,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(10),
-                                          topRight: Radius.circular(10),
-                                          bottomLeft: Radius.zero,
-                                          bottomRight: Radius.circular(10),
-                                        ),
-                                        color:
-                                            Color.fromARGB(255, 188, 222, 250),
-                                      ),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(5),
-                                            child: Text(
-                                              eachMessage["messageContent"]!,
-                                              style: TextStyle(
-                                                fontSize: 13,
-                                                fontWeight: FontWeight.w400,
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(5),
-                                            child: Text(
-                                              "${DateFormat.yMMMEd().format(
-                                                DateTime.parse(
-                                                  eachMessage["dateTime"]!,
-                                                ),
-                                              )} at ${DateFormat.jm().format(
-                                                DateTime.parse(
-                                                  eachMessage["dateTime"]!,
-                                                ),
-                                              )}",
-                                              style: TextStyle(
-                                                fontSize: 9,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.grey,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
+            child: Center(
+              child: SingleChildScrollView(
+                padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                child: Column(
+                  children: [
+                    Image.asset(
+                      "assets/images/technical_support.png",
+                      width: ScreenDimension().screenWidth(context) * .5,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 30, 0, 20),
+                      child: Text(
+                        "Chat with our team".toUpperCase(),
+                        style: TextStyle(
+                          fontFamily: "Poppins",
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16,
+                          letterSpacing: 0.5,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(5, 10, 5, 30),
+                      child: Text(
+                        "Get in touch with a member of our team for a consultation session in case you need any assistance with the application.",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.grey[800],
+                          fontSize: 14,
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context)
+                            .push(CupertinoPageRoute(builder: (context) {
+                          return const ConsultationChat();
+                        }));
+                      },
+                      child: Container(
+                        width: double.maxFinite,
+                        padding: EdgeInsets.fromLTRB(10, 15, 10, 15),
+                        decoration: BoxDecoration(
+                          color: AppDecorations().mainBlueColor,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Text(
+                          "Start Chat".toUpperCase(),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: "Poppins",
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
+                            letterSpacing: 0.7,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 20, 0, 30),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Divider(),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 15),
+                            child: Text(
+                              "OR",
+                              style: TextStyle(
+                                fontFamily: "Poppins",
+                                fontWeight: FontWeight.w700,
+                                fontSize: 16,
+                                letterSpacing: 0.5,
                               ),
-                            )
-                          : Padding(
-                              padding: const EdgeInsets.fromLTRB(5, 10, 15, 5),
-                              child: Align(
-                                alignment: Alignment.centerRight,
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Container(
-                                      padding: EdgeInsets.all(5),
-                                      width: ScreenDimension()
-                                              .screenWidth(context) *
-                                          .8,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(10),
-                                          topRight: Radius.circular(10),
-                                          bottomLeft: Radius.circular(10),
-                                          bottomRight: Radius.zero,
-                                        ),
-                                        color: const Color.fromARGB(
-                                            255, 217, 216, 216),
-                                      ),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(5),
-                                            child: Text(
-                                              eachMessage["messageContent"]!,
-                                              style: TextStyle(
-                                                fontSize: 13,
-                                                fontWeight: FontWeight.w400,
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(5),
-                                            child: Text(
-                                              "${DateFormat.yMMMEd().format(
-                                                DateTime.parse(
-                                                  eachMessage["dateTime"]!,
-                                                ),
-                                              )} at ${DateFormat.jm().format(
-                                                DateTime.parse(
-                                                  eachMessage["dateTime"]!,
-                                                ),
-                                              )}",
-                                              style: TextStyle(
-                                                fontSize: 9,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.grey,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    const SizedBox(width: 10),
-                                    Image.asset(
-                                      "assets/icons/user.png",
-                                      width: 25,
-                                      height: 25,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ),
-          IntrinsicHeight(
-            child: Container(
-              padding: EdgeInsets.fromLTRB(
-                10,
-                5,
-                10,
-                MediaQuery.of(context).padding.bottom,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(
-                    width: ScreenDimension().screenWidth(context) * 0.8,
-                    child: TextFormField(
-                      showCursor: true,
-                      maxLines: 5,
-                      minLines: 1,
-                      textInputAction: TextInputAction.done,
+                            ),
+                          ),
+                          Expanded(
+                            child: Divider(),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Text(
+                      "Read the FAQs",
                       style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                      ),
-                      decoration: InputDecoration(
-                        hintText: "Type a Message...",
-                        filled: true,
-                        fillColor: Color.fromARGB(255, 210, 233, 252),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide.none,
-                          gapPadding: 0,
-                        ),
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
                         color: AppDecorations().mainBlueColor,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: SvgPicture.asset(
-                          "assets/icons/paper_plane_filled.svg",
-                          width: 25,
-                          color: Colors.white,
-                        ),
+                        fontFamily: "Poppins",
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                        letterSpacing: 0.5,
+                        decoration: TextDecoration.underline,
+                        decorationColor: AppDecorations().mainBlueColor,
                       ),
                     ),
-                  )
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
+          )
         ],
       ),
     );

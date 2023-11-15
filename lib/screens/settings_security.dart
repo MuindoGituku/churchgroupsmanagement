@@ -30,7 +30,91 @@ class _SettingsSecurityState extends State<SettingsSecurity> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 10),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(7, 10, 5, 7),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Color.fromARGB(255, 232, 232, 232),
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Image.asset(
+                          "assets/icons/user.png",
+                          width: 40,
+                          height: 40,
+                        ),
+                        const SizedBox(width: 15),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              width:
+                                  ScreenDimension().screenWidth(context) * 0.75,
+                              child: Text(
+                                "Isabel Ramirez",
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: "Poppins",
+                                  height: 1.5,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromARGB(255, 66, 65, 65),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width:
+                                  ScreenDimension().screenWidth(context) * 0.75,
+                              child: Text(
+                                "Secretary - Woman's Guild (Parish Office)",
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  height: 2,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color.fromARGB(255, 66, 65, 65),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width:
+                                  ScreenDimension().screenWidth(context) * 0.75,
+                              child: Text(
+                                "Chairperson - Youth (Parish Office)",
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  height: 2,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color.fromARGB(255, 66, 65, 65),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width:
+                                  ScreenDimension().screenWidth(context) * 0.75,
+                              child: Text(
+                                "Chairperson - Youth (PCEA Kiamumbi Church)",
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  height: 2,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color.fromARGB(255, 66, 65, 65),
+                                ),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 20),
                   const Text(
                     "Office Tools",
                     style: TextStyle(
@@ -93,6 +177,40 @@ class _SettingsSecurityState extends State<SettingsSecurity> {
                               const SizedBox(width: 20),
                               const Text(
                                 "Document Templates",
+                                style: TextStyle(
+                                  fontFamily: "Poppins",
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SvgPicture.asset(
+                            "assets/icons/angle_right.svg",
+                            width: 20,
+                            height: 20,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Image.asset(
+                                "assets/icons/question_mark.png",
+                                width: 22,
+                                height: 22,
+                                color: AppDecorations().mainBlueColor,
+                              ),
+                              const SizedBox(width: 20),
+                              const Text(
+                                "How To Use The App",
                                 style: TextStyle(
                                   fontFamily: "Poppins",
                                   fontWeight: FontWeight.w500,

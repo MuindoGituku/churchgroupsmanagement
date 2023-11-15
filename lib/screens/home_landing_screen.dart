@@ -2,6 +2,7 @@ import 'package:churchgroupsmanagement/screens/root_navigation.dart';
 import 'package:churchgroupsmanagement/services/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class HomeLandingScreen extends StatefulWidget {
   const HomeLandingScreen({super.key});
@@ -146,12 +147,186 @@ class _HomeLandingScreenState extends State<HomeLandingScreen> {
                       ],
                     ),
                   ),
-                  Container(),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(15, 20, 15, 20),
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(10, 8, 10, 8),
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            offset: Offset(-3, 3),
+                            blurRadius: 10,
+                            color: Colors.grey.withOpacity(0.5),
+                          )
+                        ],
+                        borderRadius: BorderRadius.circular(10),
+                        color: const Color.fromARGB(187, 255, 255, 255),
+                      ),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SingleAnalyticItem(
+                                numberCount: "5",
+                                tallyDesc: "Pending Documents",
+                                artLocation: "assets/icons/time_management.png",
+                              ),
+                              SingleAnalyticItem(
+                                numberCount: "47",
+                                tallyDesc: "% Budget Utilisation",
+                                artLocation: "assets/icons/speedometer.png",
+                              ),
+                              SingleAnalyticItem(
+                                numberCount: "80",
+                                tallyDesc: "% Audit Score",
+                                artLocation: "assets/icons/trophy.png",
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 15),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Image.asset(
+                                    "assets/images/calendar_small.png",
+                                  ),
+                                  SizedBox(width: 10),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Visiting The Chaplain",
+                                        style: TextStyle(
+                                          fontFamily: "Poppins",
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w500,
+                                          height: 2,
+                                        ),
+                                      ),
+                                      Text(
+                                        "November 2023",
+                                        style: TextStyle(
+                                          fontFamily: "Poppins",
+                                          fontSize: 11,
+                                          fontWeight: FontWeight.w800,
+                                          height: 2,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              Text(
+                                "Upcoming Activity",
+                                style: TextStyle(
+                                  fontSize: 9,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(15, 5, 0, 10),
+                    child: Text(
+                      "Notifications",
+                      style: TextStyle(
+                        fontFamily: "OpenSansSemiCondensed",
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class SingleAnalyticItem extends StatelessWidget {
+  const SingleAnalyticItem({
+    super.key,
+    required this.numberCount,
+    required this.tallyDesc,
+    required this.artLocation,
+  });
+
+  final String numberCount;
+  final String tallyDesc;
+  final String artLocation;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      color: const Color.fromARGB(255, 64, 156, 255),
+      surfaceTintColor: Colors.transparent,
+      clipBehavior: Clip.hardEdge,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SizedBox(
+          width: ScreenDimension().screenWidth(context) * .2,
+          child: Stack(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    numberCount,
+                    style: const TextStyle(
+                      fontFamily: "Poppins",
+                      fontSize: 25,
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: 3,
+                      height: 1.5,
+                      color: Colors.white,
+                    ),
+                  ),
+                  SizedBox(height: 7),
+                  Text(
+                    tallyDesc,
+                    textAlign: TextAlign.left,
+                    maxLines: 2,
+                    overflow: TextOverflow.clip,
+                    style: const TextStyle(
+                      fontSize: 11,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 241, 241, 241),
+                    ),
+                  ),
+                ],
+              ),
+              Positioned(
+                right: -5,
+                top: -5,
+                child: Container(
+                  width: 35,
+                  height: 35,
+                  decoration: const BoxDecoration(),
+                  child: Image.asset(
+                    artLocation,
+                    color: Colors.white.withOpacity(0.3),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
