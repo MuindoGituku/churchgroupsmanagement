@@ -1,9 +1,6 @@
 import 'package:churchgroupsmanagement/data/sample_chat.dart';
-import 'package:churchgroupsmanagement/screens/root_navigation.dart';
 import 'package:churchgroupsmanagement/services/constants.dart';
 import 'package:churchgroupsmanagement/widgets/document_form_appbar.dart';
-import 'package:churchgroupsmanagement/widgets/main_app_bar.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
@@ -50,11 +47,11 @@ class _ConsultationChatState extends State<ConsultationChat> {
                                     ),
                                     const SizedBox(width: 10),
                                     Container(
-                                      padding: EdgeInsets.all(5),
+                                      padding: const EdgeInsets.all(5),
                                       width: ScreenDimension()
                                               .screenWidth(context) *
                                           .82,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         borderRadius: BorderRadius.only(
                                           topLeft: Radius.circular(10),
                                           topRight: Radius.circular(10),
@@ -72,7 +69,7 @@ class _ConsultationChatState extends State<ConsultationChat> {
                                             padding: const EdgeInsets.all(5),
                                             child: Text(
                                               eachMessage["messageContent"]!,
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                 fontSize: 13,
                                                 fontWeight: FontWeight.w400,
                                               ),
@@ -91,10 +88,10 @@ class _ConsultationChatState extends State<ConsultationChat> {
                                                   eachMessage["dateTime"]!,
                                                 ),
                                               )}",
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                 fontSize: 9,
                                                 fontWeight: FontWeight.bold,
-                                                color: const Color.fromARGB(
+                                                color: Color.fromARGB(
                                                     255, 119, 118, 118),
                                               ),
                                             ),
@@ -115,11 +112,11 @@ class _ConsultationChatState extends State<ConsultationChat> {
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
                                     Container(
-                                      padding: EdgeInsets.all(5),
+                                      padding: const EdgeInsets.all(5),
                                       width: ScreenDimension()
                                               .screenWidth(context) *
                                           .82,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         borderRadius: BorderRadius.only(
                                           topLeft: Radius.circular(10),
                                           topRight: Radius.circular(10),
@@ -137,7 +134,7 @@ class _ConsultationChatState extends State<ConsultationChat> {
                                             padding: const EdgeInsets.all(5),
                                             child: Text(
                                               eachMessage["messageContent"]!,
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                 fontSize: 13,
                                                 fontWeight: FontWeight.w400,
                                               ),
@@ -156,7 +153,7 @@ class _ConsultationChatState extends State<ConsultationChat> {
                                                   eachMessage["dateTime"]!,
                                                 ),
                                               )}",
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                 fontSize: 9,
                                                 fontWeight: FontWeight.bold,
                                                 color: Color.fromARGB(
@@ -201,14 +198,14 @@ class _ConsultationChatState extends State<ConsultationChat> {
                       maxLines: 5,
                       minLines: 1,
                       textInputAction: TextInputAction.done,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w500,
                       ),
                       decoration: InputDecoration(
                         hintText: "Type a Message...",
                         filled: true,
-                        fillColor: Color.fromARGB(255, 214, 234, 252),
+                        fillColor: const Color.fromARGB(255, 214, 234, 252),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: BorderSide.none,

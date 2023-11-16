@@ -200,7 +200,7 @@ class ZoomMenuScreen extends StatelessWidget {
 
   Widget buildMenuItem(MenuItem menuItem, int menuItemIndex) {
     return ListTileTheme(
-      selectedTileColor: Color.fromARGB(255, 230, 229, 229),
+      selectedTileColor: const Color.fromARGB(255, 230, 229, 229),
       textColor: const Color.fromARGB(255, 66, 65, 65),
       selectedColor: AppDecorations().mainBlueColor,
       child: ListTile(
@@ -220,7 +220,7 @@ class ZoomMenuScreen extends StatelessWidget {
                     : Colors.black,
                 size: 18,
               )
-            : SizedBox(),
+            : const SizedBox(),
         title: Text(
           menuItem.itemTitle,
           style: const TextStyle(

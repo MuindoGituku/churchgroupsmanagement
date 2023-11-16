@@ -31,10 +31,10 @@ class _SettingsSecurityState extends State<SettingsSecurity> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    padding: EdgeInsets.fromLTRB(7, 10, 5, 7),
+                    padding: const EdgeInsets.fromLTRB(7, 10, 5, 7),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Color.fromARGB(255, 232, 232, 232),
+                      color: const Color.fromARGB(255, 232, 232, 232),
                     ),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,7 +51,7 @@ class _SettingsSecurityState extends State<SettingsSecurity> {
                             SizedBox(
                               width:
                                   ScreenDimension().screenWidth(context) * 0.75,
-                              child: Text(
+                              child: const Text(
                                 "Isabel Ramirez",
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
@@ -67,7 +67,7 @@ class _SettingsSecurityState extends State<SettingsSecurity> {
                             SizedBox(
                               width:
                                   ScreenDimension().screenWidth(context) * 0.75,
-                              child: Text(
+                              child: const Text(
                                 "Secretary - Woman's Guild (Parish Office)",
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
@@ -82,7 +82,7 @@ class _SettingsSecurityState extends State<SettingsSecurity> {
                             SizedBox(
                               width:
                                   ScreenDimension().screenWidth(context) * 0.75,
-                              child: Text(
+                              child: const Text(
                                 "Chairperson - Youth (Parish Office)",
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
@@ -97,7 +97,7 @@ class _SettingsSecurityState extends State<SettingsSecurity> {
                             SizedBox(
                               width:
                                   ScreenDimension().screenWidth(context) * 0.75,
-                              child: Text(
+                              child: const Text(
                                 "Chairperson - Youth (PCEA Kiamumbi Church)",
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,

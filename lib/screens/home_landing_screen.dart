@@ -2,7 +2,6 @@ import 'package:churchgroupsmanagement/screens/root_navigation.dart';
 import 'package:churchgroupsmanagement/services/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class HomeLandingScreen extends StatefulWidget {
   const HomeLandingScreen({super.key});
@@ -59,7 +58,7 @@ class _HomeLandingScreenState extends State<HomeLandingScreen> {
                               color: AppDecorations().mainBlueColor,
                             ),
                           ),
-                          SizedBox(width: 5),
+                          const SizedBox(width: 5),
                           Icon(
                             CupertinoIcons.chevron_down,
                             size: 20,
@@ -83,7 +82,7 @@ class _HomeLandingScreenState extends State<HomeLandingScreen> {
                     padding: const EdgeInsets.fromLTRB(15, 5, 10, 10),
                     child: SizedBox(
                       width: ScreenDimension().screenWidth(context) * 0.9,
-                      child: Text(
+                      child: const Text(
                         "Welcome Back!",
                         maxLines: 1,
                         overflow: TextOverflow.clip,
@@ -114,7 +113,7 @@ class _HomeLandingScreenState extends State<HomeLandingScreen> {
                             SizedBox(
                               width:
                                   ScreenDimension().screenWidth(context) * 0.78,
-                              child: Text(
+                              child: const Text(
                                 "Isabel Ramirez",
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
@@ -130,7 +129,7 @@ class _HomeLandingScreenState extends State<HomeLandingScreen> {
                             SizedBox(
                               width:
                                   ScreenDimension().screenWidth(context) * 0.78,
-                              child: Text(
+                              child: const Text(
                                 "Secretary - Woman's Guild (Parish Office)",
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
@@ -150,11 +149,11 @@ class _HomeLandingScreenState extends State<HomeLandingScreen> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(15, 20, 15, 20),
                     child: Container(
-                      padding: EdgeInsets.fromLTRB(10, 8, 10, 8),
+                      padding: const EdgeInsets.fromLTRB(10, 8, 10, 8),
                       decoration: BoxDecoration(
                         boxShadow: [
                           BoxShadow(
-                            offset: Offset(-3, 3),
+                            offset: const Offset(-3, 3),
                             blurRadius: 10,
                             color: Colors.grey.withOpacity(0.5),
                           )
@@ -164,7 +163,7 @@ class _HomeLandingScreenState extends State<HomeLandingScreen> {
                       ),
                       child: Column(
                         children: [
-                          Row(
+                          const Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               SingleAnalyticItem(
@@ -184,7 +183,7 @@ class _HomeLandingScreenState extends State<HomeLandingScreen> {
                               ),
                             ],
                           ),
-                          SizedBox(height: 15),
+                          const SizedBox(height: 15),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -196,8 +195,8 @@ class _HomeLandingScreenState extends State<HomeLandingScreen> {
                                   Image.asset(
                                     "assets/images/calendar_small.png",
                                   ),
-                                  SizedBox(width: 10),
-                                  Column(
+                                  const SizedBox(width: 10),
+                                  const Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
@@ -223,7 +222,7 @@ class _HomeLandingScreenState extends State<HomeLandingScreen> {
                                   ),
                                 ],
                               ),
-                              Text(
+                              const Text(
                                 "Upcoming Activity",
                                 style: TextStyle(
                                   fontSize: 9,
@@ -237,8 +236,8 @@ class _HomeLandingScreenState extends State<HomeLandingScreen> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(15, 5, 0, 10),
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(15, 5, 0, 10),
                     child: Text(
                       "Notifications",
                       style: TextStyle(
@@ -297,7 +296,7 @@ class SingleAnalyticItem extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                  SizedBox(height: 7),
+                  const SizedBox(height: 7),
                   Text(
                     tallyDesc,
                     textAlign: TextAlign.left,

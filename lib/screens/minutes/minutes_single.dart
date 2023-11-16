@@ -2,6 +2,7 @@ import 'package:churchgroupsmanagement/data/sample_minutes.dart';
 import 'package:churchgroupsmanagement/screens/minutes/edit_selected_meeting.dart';
 import 'package:churchgroupsmanagement/screens/minutes/meeting_info.dart';
 import 'package:churchgroupsmanagement/services/constants.dart';
+import 'package:churchgroupsmanagement/widgets/details_screen_appbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -16,11 +17,24 @@ class SingleGroupMinute extends StatefulWidget {
 class _SingleGroupMinuteState extends State<SingleGroupMinute> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Column(
         children: [
-          SingleMeetingAppBar(),
-          Expanded(
+          DetailsScreenAppBar(
+            pageHeading: "Audit Committee Meeting",
+            pageSubHeading: "tap to view info about the meeting",
+            onTapEditor: () {
+              Navigator.of(context).push(CupertinoPageRoute(builder: (context) {
+                return const EditSelectedMeeting();
+              }));
+            },
+            onTapMoreDetails: () {
+              Navigator.of(context).push(CupertinoPageRoute(builder: (context) {
+                return const SingleMeetingInfo();
+              }));
+            },
+          ),
+          const Expanded(
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -228,124 +242,6 @@ class SingleMinuteContainer extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class SingleMeetingAppBar extends StatelessWidget {
-  const SingleMeetingAppBar({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: ScreenDimension().screenWidth(context),
-      height: ScreenDimension().screenHeight(context) * 0.13,
-      child: Padding(
-        padding: EdgeInsets.fromLTRB(
-          15,
-          MediaQuery.of(context).padding.top,
-          20,
-          0,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                GestureDetector(
-                  onTap: () => Navigator.of(context).pop(),
-                  child: Padding(
-                    padding: const EdgeInsets.all(7.0),
-                    child: Image.asset(
-                      "assets/icons/back.png",
-                      color: Colors.blue,
-                      width: 17,
-                      height: 17,
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 15),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context)
-                        .push(CupertinoPageRoute(builder: (context) {
-                      return const SingleMeetingInfo();
-                    }));
-                  },
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        width: ScreenDimension().screenWidth(context) * 0.50,
-                        child: const Text(
-                          "Audit Committee Meeting",
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontFamily: "Poppins",
-                            fontWeight: FontWeight.w600,
-                            height: 1.5,
-                            fontSize: 14,
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: ScreenDimension().screenWidth(context) * 0.53,
-                        child: const Text(
-                          "tap to view info about the meeting",
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            letterSpacing: 0.4,
-                            fontSize: 10,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.of(context)
-                          .push(CupertinoPageRoute(builder: (context) {
-                        return const EditSelectedMeeting();
-                      }));
-                    },
-                    child: Icon(
-                      CupertinoIcons.pencil_outline,
-                      color: AppDecorations().mainBlueColor,
-                      size: 25,
-                    ),
-                  ),
-                  const SizedBox(width: 25),
-                  GestureDetector(
-                    onTap: () {},
-                    child: Icon(
-                      CupertinoIcons.ellipsis_vertical,
-                      color: AppDecorations().mainBlueColor,
-                      size: 25,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }

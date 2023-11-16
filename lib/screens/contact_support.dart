@@ -1,12 +1,8 @@
-import 'package:churchgroupsmanagement/data/sample_chat.dart';
-import 'package:churchgroupsmanagement/screens/root_navigation.dart';
 import 'package:churchgroupsmanagement/screens/support_chat.dart';
 import 'package:churchgroupsmanagement/services/constants.dart';
 import 'package:churchgroupsmanagement/widgets/main_app_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:intl/intl.dart';
 
 class ContactSupport extends StatefulWidget {
   const ContactSupport({super.key});
@@ -30,7 +26,7 @@ class _ContactSupportState extends State<ContactSupport> {
           Expanded(
             child: Center(
               child: SingleChildScrollView(
-                padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
                 child: Column(
                   children: [
                     Image.asset(
@@ -41,7 +37,7 @@ class _ContactSupportState extends State<ContactSupport> {
                       padding: const EdgeInsets.fromLTRB(0, 30, 0, 20),
                       child: Text(
                         "Chat with our team".toUpperCase(),
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontFamily: "Poppins",
                           fontWeight: FontWeight.w700,
                           fontSize: 16,
@@ -69,7 +65,7 @@ class _ContactSupportState extends State<ContactSupport> {
                       },
                       child: Container(
                         width: double.maxFinite,
-                        padding: EdgeInsets.fromLTRB(10, 15, 10, 15),
+                        padding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
                         decoration: BoxDecoration(
                           color: AppDecorations().mainBlueColor,
                           borderRadius: BorderRadius.circular(5),
@@ -77,7 +73,7 @@ class _ContactSupportState extends State<ContactSupport> {
                         child: Text(
                           "Start Chat".toUpperCase(),
                           textAlign: TextAlign.center,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontFamily: "Poppins",
                             fontWeight: FontWeight.bold,
@@ -87,15 +83,15 @@ class _ContactSupportState extends State<ContactSupport> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 20, 0, 30),
+                    const Padding(
+                      padding: EdgeInsets.fromLTRB(0, 20, 0, 30),
                       child: Row(
                         children: [
                           Expanded(
                             child: Divider(),
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 15),
+                            padding: EdgeInsets.symmetric(horizontal: 15),
                             child: Text(
                               "OR",
                               style: TextStyle(
