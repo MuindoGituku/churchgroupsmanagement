@@ -1,6 +1,7 @@
 import 'package:churchgroupsmanagement/data/sample_attendance.dart';
 import 'package:churchgroupsmanagement/data/sample_minutes.dart';
 import 'package:churchgroupsmanagement/services/constants.dart';
+import 'package:churchgroupsmanagement/widgets/document_form_appbar.dart';
 import 'package:churchgroupsmanagement/widgets/stepper_buttons.dart';
 import 'package:churchgroupsmanagement/widgets/text_form_field.dart';
 import 'package:dropdown_search/dropdown_search.dart';
@@ -8,14 +9,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-class CreateNewMeeting extends StatefulWidget {
-  const CreateNewMeeting({super.key});
+class EditPreparedMeeting extends StatefulWidget {
+  const EditPreparedMeeting({super.key});
 
   @override
-  State<CreateNewMeeting> createState() => _CreateNewMeetingState();
+  State<EditPreparedMeeting> createState() => _EditPreparedMeetingState();
 }
 
-class _CreateNewMeetingState extends State<CreateNewMeeting> {
+class _EditPreparedMeetingState extends State<EditPreparedMeeting> {
   int activeStep = 0;
 
   @override
@@ -51,14 +52,14 @@ class _CreateNewMeetingState extends State<CreateNewMeeting> {
             ),
             const SizedBox(width: 15),
             SizedBox(
-              width: ScreenDimension().screenWidth(context) * 0.50,
+              width: ScreenDimension().screenWidth(context) * 0.80,
               child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
                     padding: EdgeInsets.zero,
                     child: Text(
-                      "Create New Meeting",
+                      "Update Prepared Minutes",
                       style: TextStyle(
                         fontFamily: "Poppins",
                         fontWeight: FontWeight.w700,
@@ -69,7 +70,7 @@ class _CreateNewMeetingState extends State<CreateNewMeeting> {
                     ),
                   ),
                   Text(
-                    "Woman's Guild (Parish Office)",
+                    "Christmas Celebration Committee",
                     style: TextStyle(
                       letterSpacing: 0.7,
                       fontSize: 10,
@@ -81,33 +82,8 @@ class _CreateNewMeetingState extends State<CreateNewMeeting> {
             ),
           ],
         ),
-        actions: [
-          activeStep != 0
-              ? GestureDetector(
-                  onTap: () => Navigator.of(context).pop(),
-                  child: Container(
-                    padding: const EdgeInsets.fromLTRB(10, 7, 10, 7),
-                    margin: const EdgeInsets.only(right: 15),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: AppDecorations().mainBlueColor,
-                      ),
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: Text(
-                      "Save Draft",
-                      style: TextStyle(
-                        fontFamily: "Poppins",
-                        fontWeight: FontWeight.w500,
-                        fontSize: 12,
-                        color: AppDecorations().mainBlueColor,
-                      ),
-                    ),
-                  ),
-                )
-              : const SizedBox(),
-        ],
       ),
+      backgroundColor: Theme.of(context).canvasColor,
       body: Stepper(
         type: StepperType.horizontal,
         currentStep: activeStep,
@@ -144,7 +120,7 @@ class _CreateNewMeetingState extends State<CreateNewMeeting> {
                         ? "Agenda"
                         : activeStep == 3
                             ? "Minutes"
-                            : "Upload Meeting",
+                            : "Upload Changes",
             cancelText: activeStep == 0 ? "Discard" : "Go Back",
           );
         },
@@ -422,7 +398,7 @@ class NewMeetingMinutes extends StatelessWidget {
                   "Add Meeting Minute",
                   style: TextStyle(
                     fontFamily: "Poppins",
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w500,
                     color: Colors.white,
                   ),
                 ),
@@ -445,7 +421,7 @@ class NewMeetingMinutes extends StatelessWidget {
                     child: Text(
                       "${sampleMeetingMinutes.indexOf(eachMinute) + 1}.",
                       style: const TextStyle(
-                        fontSize: 11,
+                        fontSize: 13,
                         fontWeight: FontWeight.bold,
                         fontFamily: "Poppins",
                       ),
@@ -457,7 +433,7 @@ class NewMeetingMinutes extends StatelessWidget {
                       eachMinute["minuteTitle"].toUpperCase(),
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 12,
+                        fontSize: 13,
                         fontFamily: "Poppins",
                       ),
                     ),
@@ -1201,7 +1177,7 @@ class NewMeetingInfo extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "These are the steps to create a new meeting entry for this group. You can save the progress at any point as a draft to be completed later then shared to other officials.",
+          "Update the details for a meeting. You can save the progress at any point as a draft to be completed later then shared to other officials.",
           style: TextStyle(
             fontSize: 12,
             fontWeight: FontWeight.w400,

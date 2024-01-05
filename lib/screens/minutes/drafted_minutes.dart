@@ -1,17 +1,17 @@
 import 'package:churchgroupsmanagement/data/sample_meetings.dart';
-import 'package:churchgroupsmanagement/screens/minutes/minutes_single_prepared.dart';
+import 'package:churchgroupsmanagement/screens/minutes/minutes_single_draft.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class PreparedMinutesList extends StatefulWidget {
-  const PreparedMinutesList({super.key});
+class DraftedMinutesList extends StatefulWidget {
+  const DraftedMinutesList({super.key});
 
   @override
-  State<PreparedMinutesList> createState() => _PreparedMinutesListState();
+  State<DraftedMinutesList> createState() => _DraftedMinutesListState();
 }
 
-class _PreparedMinutesListState extends State<PreparedMinutesList> {
+class _DraftedMinutesListState extends State<DraftedMinutesList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +37,7 @@ class _PreparedMinutesListState extends State<PreparedMinutesList> {
                       onTap: () {
                         Navigator.of(context)
                             .push(CupertinoPageRoute(builder: (context) {
-                          return const SinglePreparedMeeting();
+                          return const SingleDraftMeeting();
                         }));
                       },
                       child: Padding(

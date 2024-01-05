@@ -1,19 +1,17 @@
-import 'package:churchgroupsmanagement/screens/minutes/create_new_meeting.dart';
-import 'package:churchgroupsmanagement/screens/minutes/approved_minutes.dart';
-import 'package:churchgroupsmanagement/screens/minutes/drafted_minutes.dart';
-import 'package:churchgroupsmanagement/screens/minutes/prepared_minutes.dart';
+import 'package:churchgroupsmanagement/screens/minutes/meeting_about_draft.dart';
+import 'package:churchgroupsmanagement/screens/minutes/meeting_agenda_list_draftprep.dart';
+import 'package:churchgroupsmanagement/screens/minutes/meeting_attendance_draftprep.dart';
 import 'package:churchgroupsmanagement/services/constants.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class AllGroupMinutes extends StatefulWidget {
-  const AllGroupMinutes({super.key});
+class DraftSingleMeetingInfo extends StatefulWidget {
+  const DraftSingleMeetingInfo({super.key});
 
   @override
-  State<AllGroupMinutes> createState() => _AllGroupMinutesState();
+  State<DraftSingleMeetingInfo> createState() => _DraftSingleMeetingInfoState();
 }
 
-class _AllGroupMinutesState extends State<AllGroupMinutes>
+class _DraftSingleMeetingInfoState extends State<DraftSingleMeetingInfo>
     with TickerProviderStateMixin {
   late TabController tabController;
 
@@ -27,26 +25,6 @@ class _AllGroupMinutesState extends State<AllGroupMinutes>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          Navigator.of(context).push(CupertinoPageRoute(builder: (context) {
-            return const CreateNewMeeting();
-          }));
-        },
-        backgroundColor: AppDecorations().mainBlueColor,
-        label: const Text(
-          "New Meeting",
-          style: TextStyle(
-            fontFamily: "Poppins",
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-        ),
-        icon: const Icon(
-          CupertinoIcons.add,
-          color: Colors.white,
-        ),
-      ),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         centerTitle: false,
@@ -77,14 +55,14 @@ class _AllGroupMinutesState extends State<AllGroupMinutes>
             ),
             const SizedBox(width: 15),
             SizedBox(
-              width: ScreenDimension().screenWidth(context) * 0.60,
+              width: ScreenDimension().screenWidth(context) * 0.80,
               child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
                     padding: EdgeInsets.zero,
                     child: Text(
-                      "Group Meetings",
+                      "Community Outreach Program",
                       style: TextStyle(
                         fontFamily: "Poppins",
                         fontWeight: FontWeight.w700,
@@ -117,13 +95,13 @@ class _AllGroupMinutesState extends State<AllGroupMinutes>
           dividerColor: Colors.transparent,
           tabs: const [
             Tab(
-              text: "Confirmed",
+              text: "About",
             ),
             Tab(
-              text: "Prepared",
+              text: "Attendance",
             ),
             Tab(
-              text: "Drafts",
+              text: "Agenda",
             ),
           ],
           unselectedLabelStyle: const TextStyle(
@@ -139,22 +117,13 @@ class _AllGroupMinutesState extends State<AllGroupMinutes>
             color: AppDecorations().mainBlueColor,
           ),
         ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 15),
-            child: IconButton(
-              onPressed: () {},
-              icon: const Icon(CupertinoIcons.search),
-            ),
-          ),
-        ],
       ),
       body: TabBarView(
         controller: tabController,
         children: const [
-          ApprovedMinutesList(),
-          PreparedMinutesList(),
-          DraftedMinutesList(),
+          DraftMeetingAboutInfo(),
+          DraftPrepMeetingAttendanceInfo(),
+          DraftPrepMeetingAgendaList(),
         ],
       ),
     );

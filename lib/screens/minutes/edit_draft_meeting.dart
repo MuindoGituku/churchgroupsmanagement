@@ -1,4 +1,3 @@
-import 'package:churchgroupsmanagement/data/sample_agenda.dart';
 import 'package:churchgroupsmanagement/data/sample_attendance.dart';
 import 'package:churchgroupsmanagement/data/sample_minutes.dart';
 import 'package:churchgroupsmanagement/services/constants.dart';
@@ -10,71 +9,148 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-class EditSelectedMeeting extends StatefulWidget {
-  const EditSelectedMeeting({super.key});
+class EditDraftMeeting extends StatefulWidget {
+  const EditDraftMeeting({super.key});
 
   @override
-  State<EditSelectedMeeting> createState() => _EditSelectedMeetingState();
+  State<EditDraftMeeting> createState() => _EditDraftMeetingState();
 }
 
-class _EditSelectedMeetingState extends State<EditSelectedMeeting> {
+class _EditDraftMeetingState extends State<EditDraftMeeting> {
   int activeStep = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).canvasColor,
-      body: Column(
-        children: [
-          const DocumentFormAppBar(
-            formHeading: "Update Meeting Details",
-            formSubHeading: "Woman's Guild",
-          ),
-          Expanded(
-            child: Stepper(
-              type: StepperType.horizontal,
-              currentStep: activeStep,
-              margin: EdgeInsets.zero,
-              elevation: 0,
-              onStepTapped: (value) => setState(() => activeStep = value),
-              controlsBuilder: (context, details) {
-                return CustomStepperButtons(
-                  onTapContinue: () {
-                    if (activeStep + 1 < newMeetingSteps.length) {
-                      setState(() {
-                        activeStep++;
-                      });
-                    } else if (activeStep + 1 == newMeetingSteps.length) {
-                      Navigator.of(context).pop();
-                    } else {
-                      null;
-                    }
-                  },
-                  onTapCancel: () {
-                    if (activeStep == 0) {
-                      Navigator.of(context).pop();
-                    } else {
-                      setState(() {
-                        activeStep--;
-                      });
-                    }
-                  },
-                  continueText: activeStep == 0
-                      ? "Metadata"
-                      : activeStep == 1
-                          ? "Attendance"
-                          : activeStep == 2
-                              ? "Agenda"
-                              : activeStep == 3
-                                  ? "Minutes"
-                                  : "Upload Meeting",
-                  cancelText: activeStep == 0 ? "Discard" : "Go Back",
-                );
-              },
-              steps: newMeetingSteps,
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        centerTitle: false,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            GestureDetector(
+              onTap: () => Navigator.of(context).pop(),
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.blue,
+                    width: 1,
+                  ),
+                  shape: BoxShape.circle,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(7.0),
+                  child: Image.asset(
+                    "assets/icons/back.png",
+                    color: Colors.blue,
+                    width: 15,
+                    height: 15,
+                  ),
+                ),
+              ),
             ),
-          ),
+            const SizedBox(width: 15),
+            SizedBox(
+              width: ScreenDimension().screenWidth(context) * 0.50,
+              child: const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.zero,
+                    child: Text(
+                      "Update Draft Meetings",
+                      style: TextStyle(
+                        fontFamily: "Poppins",
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 0.7,
+                        height: 1.5,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
+                  Text(
+                    "Community Outreach Planning",
+                    style: TextStyle(
+                      letterSpacing: 0.7,
+                      fontSize: 10,
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          activeStep != 0
+              ? GestureDetector(
+                  onTap: () => Navigator.of(context).pop(),
+                  child: Container(
+                    padding: const EdgeInsets.fromLTRB(10, 7, 10, 7),
+                    margin: const EdgeInsets.only(right: 15),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: AppDecorations().mainBlueColor,
+                      ),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Text(
+                      "Save Draft",
+                      style: TextStyle(
+                        fontFamily: "Poppins",
+                        fontWeight: FontWeight.w500,
+                        fontSize: 12,
+                        color: AppDecorations().mainBlueColor,
+                      ),
+                    ),
+                  ),
+                )
+              : const SizedBox(),
         ],
+      ),
+      backgroundColor: Theme.of(context).canvasColor,
+      body: Stepper(
+        type: StepperType.horizontal,
+        currentStep: activeStep,
+        margin: EdgeInsets.zero,
+        elevation: 0,
+        onStepTapped: (value) => setState(() => activeStep = value),
+        controlsBuilder: (context, details) {
+          return CustomStepperButtons(
+            onTapContinue: () {
+              if (activeStep + 1 < newMeetingSteps.length) {
+                setState(() {
+                  activeStep++;
+                });
+              } else if (activeStep + 1 == newMeetingSteps.length) {
+                Navigator.of(context).pop();
+              } else {
+                null;
+              }
+            },
+            onTapCancel: () {
+              if (activeStep == 0) {
+                Navigator.of(context).pop();
+              } else {
+                setState(() {
+                  activeStep--;
+                });
+              }
+            },
+            continueText: activeStep == 0
+                ? "Metadata"
+                : activeStep == 1
+                    ? "Attendance"
+                    : activeStep == 2
+                        ? "Agenda"
+                        : activeStep == 3
+                            ? "Minutes"
+                            : "Upload Meeting",
+            cancelText: activeStep == 0 ? "Discard" : "Go Back",
+          );
+        },
+        steps: newMeetingSteps,
       ),
     );
   }
@@ -229,8 +305,11 @@ class NewMeetingMinutes extends StatelessWidget {
                                   Padding(
                                     padding:
                                         const EdgeInsets.fromLTRB(0, 10, 0, 20),
-                                    child: DropdownSearch(
-                                      items: sampleAgendas,
+                                    child: DropdownSearch<Map<String, dynamic>>(
+                                      items: sampleMeetingMinutes,
+                                      itemAsString:
+                                          (Map<String, dynamic> item) =>
+                                              item["minuteTitle"]!,
                                       dropdownDecoratorProps:
                                           DropDownDecoratorProps(
                                         baseStyle: const TextStyle(
@@ -345,7 +424,7 @@ class NewMeetingMinutes extends StatelessWidget {
                   "Add Meeting Minute",
                   style: TextStyle(
                     fontFamily: "Poppins",
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w500,
                     color: Colors.white,
                   ),
                 ),
@@ -361,6 +440,7 @@ class NewMeetingMinutes extends StatelessWidget {
             child: ExpansionTile(
               tilePadding: EdgeInsets.zero,
               title: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(right: 5),
@@ -373,12 +453,15 @@ class NewMeetingMinutes extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Text(
-                    eachMinute["minuteTitle"].toUpperCase(),
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 13,
-                      fontFamily: "Poppins",
+                  SizedBox(
+                    width: ScreenDimension().screenWidth(context) * 0.70,
+                    child: Text(
+                      eachMinute["minuteTitle"].toUpperCase(),
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 13,
+                        fontFamily: "Poppins",
+                      ),
                     ),
                   ),
                 ],
@@ -565,7 +648,7 @@ class NewMeetingAgenda extends StatelessWidget {
             3: IntrinsicColumnWidth(),
           },
           children: List.generate(
-            sampleAgendas.length,
+            sampleMeetingMinutes.length,
             (index) {
               return TableRow(
                 children: [
@@ -583,7 +666,7 @@ class NewMeetingAgenda extends StatelessWidget {
                   ),
                   TableCell(
                     child: Text(
-                      sampleAgendas[index],
+                      sampleMeetingMinutes[index]["minuteTitle"],
                       style: const TextStyle(
                         fontSize: 12,
                       ),

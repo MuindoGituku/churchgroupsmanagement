@@ -46,9 +46,9 @@ class CustomStepperButtons extends StatelessWidget {
                   continueText,
                   style: const TextStyle(
                     fontFamily: "Poppins",
-                    fontSize: 14,
+                    fontSize: 13,
                     letterSpacing: 0.5,
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.w500,
                     color: Colors.white,
                   ),
                 ),
@@ -70,9 +70,9 @@ class CustomStepperButtons extends StatelessWidget {
                   cancelText,
                   style: TextStyle(
                     fontFamily: "Poppins",
-                    fontSize: 14,
+                    fontSize: 13,
                     letterSpacing: 0.5,
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.w500,
                     color: AppDecorations().mainBlueColor,
                   ),
                 ),

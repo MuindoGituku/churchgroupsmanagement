@@ -1,3 +1,9 @@
+import 'package:churchgroupsmanagement/screens/budgets/budgets_list.dart';
+import 'package:churchgroupsmanagement/screens/calendars/calendar_events_list.dart';
+import 'package:churchgroupsmanagement/screens/minutes/minutes_list.dart';
+import 'package:churchgroupsmanagement/screens/reports/acitivity_reports_list.dart';
+import 'package:churchgroupsmanagement/screens/requisitions/requisitions_list.dart';
+import 'package:churchgroupsmanagement/screens/returns/returns_list.dart';
 import 'package:churchgroupsmanagement/screens/root_navigation.dart';
 import 'package:churchgroupsmanagement/services/constants.dart';
 import 'package:flutter/cupertino.dart';
@@ -155,15 +161,15 @@ class _HomeLandingScreenState extends State<HomeLandingScreen> {
                           BoxShadow(
                             offset: const Offset(-3, 3),
                             blurRadius: 10,
-                            color: Colors.grey.withOpacity(0.5),
+                            color: Colors.grey.withOpacity(0.3),
                           )
                         ],
                         borderRadius: BorderRadius.circular(10),
                         color: const Color.fromARGB(187, 255, 255, 255),
                       ),
-                      child: Column(
+                      child: const Column(
                         children: [
-                          const Row(
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               SingleAnalyticItem(
@@ -183,55 +189,7 @@ class _HomeLandingScreenState extends State<HomeLandingScreen> {
                               ),
                             ],
                           ),
-                          const SizedBox(height: 15),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Image.asset(
-                                    "assets/images/calendar_small.png",
-                                  ),
-                                  const SizedBox(width: 10),
-                                  const Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Visiting The Chaplain",
-                                        style: TextStyle(
-                                          fontFamily: "Poppins",
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.w500,
-                                          height: 2,
-                                        ),
-                                      ),
-                                      Text(
-                                        "November 2023",
-                                        style: TextStyle(
-                                          fontFamily: "Poppins",
-                                          fontSize: 11,
-                                          fontWeight: FontWeight.w800,
-                                          height: 2,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              const Text(
-                                "Upcoming Activity",
-                                style: TextStyle(
-                                  fontSize: 9,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ],
-                          )
+                          SizedBox(height: 5),
                         ],
                       ),
                     ),
@@ -239,7 +197,7 @@ class _HomeLandingScreenState extends State<HomeLandingScreen> {
                   const Padding(
                     padding: EdgeInsets.fromLTRB(15, 5, 0, 10),
                     child: Text(
-                      "Notifications",
+                      "Group Documents",
                       style: TextStyle(
                         fontFamily: "OpenSansSemiCondensed",
                         fontWeight: FontWeight.bold,
@@ -247,11 +205,135 @@ class _HomeLandingScreenState extends State<HomeLandingScreen> {
                       ),
                     ),
                   ),
+                  GridView(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    padding: const EdgeInsets.fromLTRB(15, 5, 15, 20),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
+                      childAspectRatio: 1.4,
+                    ),
+                    children: const [
+                      SingleDocumentThumbnail(
+                        documentTitle: "Group Minutes",
+                        documentPermision: "View, create and update records",
+                        documentsThumb: "assets/images/meeting.png",
+                        rerouteNavigation: AllGroupMinutes(),
+                      ),
+                      SingleDocumentThumbnail(
+                        documentTitle: "Calendar of Events",
+                        documentPermision: "View, create and update records",
+                        documentsThumb: "assets/images/calendars.png",
+                        rerouteNavigation: AllCalendarEvents(),
+                      ),
+                      SingleDocumentThumbnail(
+                        documentTitle: "Group Activity Reports",
+                        documentPermision: "View, create and update records",
+                        documentsThumb: "assets/images/dashboard.png",
+                        rerouteNavigation: AllActivityReports(),
+                      ),
+                      SingleDocumentThumbnail(
+                        documentTitle: "Group Budgets",
+                        documentPermision: "View group records",
+                        documentsThumb: "assets/images/planning.png",
+                        rerouteNavigation: AllGroupBudgets(),
+                      ),
+                      SingleDocumentThumbnail(
+                        documentTitle: "Expense Requisitions",
+                        documentPermision: "View group records",
+                        documentsThumb: "assets/images/earning.png",
+                        rerouteNavigation: AllExpenseRequisitions(),
+                      ),
+                      SingleDocumentThumbnail(
+                        documentTitle: "Expenditure Returns",
+                        documentPermision: "View group records",
+                        documentsThumb: "assets/images/accounting.png",
+                        rerouteNavigation: AllReturnForms(),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class SingleDocumentThumbnail extends StatelessWidget {
+  const SingleDocumentThumbnail({
+    super.key,
+    required this.documentTitle,
+    required this.documentPermision,
+    required this.documentsThumb,
+    required this.rerouteNavigation,
+  });
+
+  final String documentTitle;
+  final String documentPermision;
+  final String documentsThumb;
+  final Widget rerouteNavigation;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(CupertinoPageRoute(builder: (context) {
+          return rerouteNavigation;
+        }));
+      },
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              offset: const Offset(-3, 3),
+              blurRadius: 10,
+              color: Colors.grey.withOpacity(0.3),
+            )
+          ],
+          borderRadius: BorderRadius.circular(7),
+          color: const Color.fromARGB(187, 255, 255, 255),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              documentsThumb,
+              width: 40,
+              height: 40,
+            ),
+            const SizedBox(height: 10),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  documentTitle,
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w700,
+                    fontFamily: "Poppins",
+                  ),
+                ),
+                const SizedBox(height: 3),
+                Text(
+                  documentPermision,
+                  style: const TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w300,
+                    color: Colors.grey,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

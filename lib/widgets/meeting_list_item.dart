@@ -1,6 +1,4 @@
-import 'package:churchgroupsmanagement/screens/minutes/minutes_single.dart';
 import 'package:churchgroupsmanagement/services/constants.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SingleMeetingListItem extends StatelessWidget {
@@ -21,9 +19,9 @@ class SingleMeetingListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(CupertinoPageRoute(builder: (context) {
-          return const SingleGroupMinute();
-        }));
+        // Navigator.of(context).push(CupertinoPageRoute(builder: (context) {
+        //   return const SingleGroupMinute();
+        // }));
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 15),

@@ -1,7 +1,6 @@
 import 'package:churchgroupsmanagement/screens/calendars/calendar_events_single.dart';
 import 'package:churchgroupsmanagement/screens/calendars/create_new_calendar.dart';
 import 'package:churchgroupsmanagement/services/constants.dart';
-import 'package:churchgroupsmanagement/widgets/main_app_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -36,78 +35,95 @@ class _AllCalendarEventsState extends State<AllCalendarEvents> {
           color: Colors.white,
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          MainPageAppBar(
-            pageTitle: "Calendars of Events",
-            pageSubtitle: "Woman's Guild",
-            onTapAdd: () {
-              Navigator.of(context).push(CupertinoPageRoute(builder: (context) {
-                return const CreateNewCalendar();
-              }));
-            },
-            onTapSearch: () {
-              Navigator.of(context).push(CupertinoPageRoute(builder: (context) {
-                return const CreateNewCalendar();
-              }));
-            },
-          ),
-          const Expanded(
-            child: SingleChildScrollView(
-              padding: EdgeInsets.fromLTRB(15, 20, 15, 25),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
-                    child: SingleCalendarListItem(
-                      calendarStatus: "Proposed",
-                      calendarYear: "2023 - 2024",
-                      lastUpdateDate: "Sun 20/11/2023 at 4:37 PM",
-                      activitiesNumber: "18",
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 10, 0, 20),
-                    child: SingleCalendarListItem(
-                      calendarStatus: "Current",
-                      calendarYear: "2022 - 2023",
-                      lastUpdateDate: "Tue 20/09/2022 at 7:10 PM",
-                      activitiesNumber: "25",
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 10, 0, 20),
-                    child: SingleCalendarListItem(
-                      calendarStatus: "Closed",
-                      calendarYear: "2021 - 2022",
-                      lastUpdateDate: "Tue 20/09/2022 at 7:10 PM",
-                      activitiesNumber: "25",
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 10, 0, 20),
-                    child: SingleCalendarListItem(
-                      calendarStatus: "Closed",
-                      calendarYear: "2020 - 2021",
-                      lastUpdateDate: "Tue 20/09/2022 at 7:10 PM",
-                      activitiesNumber: "25",
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 10, 0, 20),
-                    child: SingleCalendarListItem(
-                      calendarStatus: "Closed",
-                      calendarYear: "2019 - 2020",
-                      lastUpdateDate: "Tue 20/09/2022 at 7:10 PM",
-                      activitiesNumber: "25",
-                    ),
-                  ),
-                ],
+      appBar: AppBar(
+        centerTitle: false,
+        title: const Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.zero,
+              child: Text(
+                "Calendars of Events",
+                style: TextStyle(
+                  fontFamily: "Poppins",
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: 0.7,
+                  height: 1.5,
+                  fontSize: 15,
+                ),
               ),
+            ),
+            Text(
+              "Woman's Guild (Parish Office)",
+              style: TextStyle(
+                letterSpacing: 0.7,
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 15),
+            child: IconButton(
+              onPressed: () {},
+              icon: const Icon(CupertinoIcons.search),
             ),
           ),
         ],
+      ),
+      body: const SingleChildScrollView(
+        padding: EdgeInsets.fromLTRB(15, 20, 15, 25),
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+              child: SingleCalendarListItem(
+                calendarStatus: "Proposed",
+                calendarYear: "2023 - 2024",
+                lastUpdateDate: "Sun 20/11/2023 at 4:37 PM",
+                activitiesNumber: "18",
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 10, 0, 20),
+              child: SingleCalendarListItem(
+                calendarStatus: "Current",
+                calendarYear: "2022 - 2023",
+                lastUpdateDate: "Tue 20/09/2022 at 7:10 PM",
+                activitiesNumber: "25",
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 10, 0, 20),
+              child: SingleCalendarListItem(
+                calendarStatus: "Closed",
+                calendarYear: "2021 - 2022",
+                lastUpdateDate: "Tue 20/09/2022 at 7:10 PM",
+                activitiesNumber: "25",
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 10, 0, 20),
+              child: SingleCalendarListItem(
+                calendarStatus: "Closed",
+                calendarYear: "2020 - 2021",
+                lastUpdateDate: "Tue 20/09/2022 at 7:10 PM",
+                activitiesNumber: "25",
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 10, 0, 20),
+              child: SingleCalendarListItem(
+                calendarStatus: "Closed",
+                calendarYear: "2019 - 2020",
+                lastUpdateDate: "Tue 20/09/2022 at 7:10 PM",
+                activitiesNumber: "25",
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
