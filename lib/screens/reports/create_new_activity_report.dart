@@ -1,6 +1,4 @@
-
 import 'package:churchgroupsmanagement/services/constants.dart';
-import 'package:churchgroupsmanagement/widgets/document_form_appbar.dart';
 import 'package:churchgroupsmanagement/widgets/stepper_buttons.dart';
 import 'package:churchgroupsmanagement/widgets/text_form_field.dart';
 import 'package:flutter/cupertino.dart';
@@ -21,56 +19,106 @@ class _CreateNewActivityReportState extends State<CreateNewActivityReport> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          const DocumentFormAppBar(
-            formHeading: "Create New Activity Report",
-            formSubHeading: "Woman's Guild",
-          ),
-          Expanded(
-            child: Stepper(
-              type: StepperType.horizontal,
-              currentStep: activeStep,
-              margin: EdgeInsets.zero,
-              elevation: 0,
-              onStepTapped: (value) => setState(() => activeStep = value),
-              steps: newActivityReportSteps,
-              controlsBuilder: (context, details) {
-                return CustomStepperButtons(
-                  onTapContinue: () {
-                    if (activeStep + 1 < newActivityReportSteps.length) {
-                      setState(() {
-                        activeStep++;
-                      });
-                    } else if (activeStep + 1 ==
-                        newActivityReportSteps.length) {
-                      Navigator.of(context).pop();
-                    } else {
-                      null;
-                    }
-                  },
-                  onTapCancel: () {
-                    if (activeStep == 0) {
-                      Navigator.of(context).pop();
-                    } else {
-                      setState(() {
-                        activeStep--;
-                      });
-                    }
-                  },
-                  continueText: activeStep == 0
-                      ? "Metadata"
-                      : activeStep == 1
-                          ? "Activity Report"
-                          : activeStep == 2
-                              ? "Attatchments"
-                              : "Upload Report",
-                  cancelText: activeStep == 0 ? "Discard" : "Go Back",
-                );
-              },
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        centerTitle: false,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            GestureDetector(
+              onTap: () => Navigator.of(context).pop(),
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.blue,
+                    width: 1,
+                  ),
+                  shape: BoxShape.circle,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(7.0),
+                  child: Image.asset(
+                    "assets/icons/back.png",
+                    color: Colors.blue,
+                    width: 15,
+                    height: 15,
+                  ),
+                ),
+              ),
             ),
-          ),
-        ],
+            const SizedBox(width: 15),
+            SizedBox(
+              width: ScreenDimension().screenWidth(context) * 0.60,
+              child: const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.zero,
+                    child: Text(
+                      "Create New Activity Report",
+                      style: TextStyle(
+                        fontFamily: "Poppins",
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 0.7,
+                        height: 1.5,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
+                  Text(
+                    "Woman's Guild (Parish Office)",
+                    style: TextStyle(
+                      letterSpacing: 0.7,
+                      fontSize: 10,
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      body: Stepper(
+        type: StepperType.horizontal,
+        currentStep: activeStep,
+        margin: EdgeInsets.zero,
+        elevation: 0,
+        onStepTapped: (value) => setState(() => activeStep = value),
+        steps: newActivityReportSteps,
+        controlsBuilder: (context, details) {
+          return CustomStepperButtons(
+            onTapContinue: () {
+              if (activeStep + 1 < newActivityReportSteps.length) {
+                setState(() {
+                  activeStep++;
+                });
+              } else if (activeStep + 1 == newActivityReportSteps.length) {
+                Navigator.of(context).pop();
+              } else {
+                null;
+              }
+            },
+            onTapCancel: () {
+              if (activeStep == 0) {
+                Navigator.of(context).pop();
+              } else {
+                setState(() {
+                  activeStep--;
+                });
+              }
+            },
+            continueText: activeStep == 0
+                ? "Metadata"
+                : activeStep == 1
+                    ? "Activity Report"
+                    : activeStep == 2
+                        ? "Attatchments"
+                        : "Upload Report",
+            cancelText: activeStep == 0 ? "Discard" : "Go Back",
+          );
+        },
       ),
     );
   }

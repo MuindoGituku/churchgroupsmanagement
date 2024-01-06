@@ -1,6 +1,6 @@
 import 'package:churchgroupsmanagement/screens/calendars/calendar_info.dart';
 import 'package:churchgroupsmanagement/screens/calendars/edit_calendar_events.dart';
-import 'package:churchgroupsmanagement/widgets/details_screen_appbar.dart';
+import 'package:churchgroupsmanagement/services/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -15,125 +15,165 @@ class _SingleCalendarofEventsState extends State<SingleCalendarofEvents> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          DetailsScreenAppBar(
-            pageHeading: "Year 2023 - 2024",
-            pageSubHeading: "tap to view info about the calendar",
-            onTapEditor: () {
-              Navigator.of(context).push(CupertinoPageRoute(builder: (context) {
-                return const EditCalendarEvents();
-              }));
-            },
-            onTapMoreDetails: () {
-              Navigator.of(context).push(CupertinoPageRoute(builder: (context) {
-                return const CalendarEventsInfo();
-              }));
-            },
-          ),
-          const Expanded(
-            child: SingleChildScrollView(
-              padding: EdgeInsets.zero,
-              child: Column(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        centerTitle: false,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            GestureDetector(
+              onTap: () => Navigator.of(context).pop(),
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.blue,
+                    width: 1,
+                  ),
+                  shape: BoxShape.circle,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(7.0),
+                  child: Image.asset(
+                    "assets/icons/back.png",
+                    color: Colors.blue,
+                    width: 15,
+                    height: 15,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(width: 15),
+            SizedBox(
+              width: ScreenDimension().screenWidth(context) * 0.60,
+              child: const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
-                    child: SingleEventItem(
-                      eventMonth: "NOV",
-                      eventTitle: "Handing Over",
+                    padding: EdgeInsets.zero,
+                    child: Text(
+                      "Financial Year 2023 - 2024",
+                      style: TextStyle(
+                        fontFamily: "Poppins",
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 0.7,
+                        height: 1.5,
+                        fontSize: 14,
+                      ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                    child: SingleEventItem(
-                      eventMonth: "DEC",
-                      eventTitle: "Visiting The Chaplain",
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                    child: SingleEventItem(
-                      eventMonth: "JAN",
-                      eventTitle: "World Day of Prayer",
-                      initiallyExpanded: true,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                    child: SingleEventItem(
-                      eventMonth: "FEB",
-                      eventTitle: "Acts of Mercy",
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                    child: SingleEventItem(
-                      eventMonth: "Mar",
-                      eventTitle: "Joint Fellowship",
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                    child: SingleEventItem(
-                      eventMonth: "Apr",
-                      eventTitle: "Full Council Meeting",
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                    child: SingleEventItem(
-                      eventMonth: "May",
-                      eventTitle: "All Ladies Seminar",
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                    child: SingleEventItem(
-                      eventMonth: "Jun",
-                      eventTitle: "Economic Empowerment",
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                    child: SingleEventItem(
-                      eventMonth: "Jul",
-                      eventTitle: "Executive Meeting",
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                    child: SingleEventItem(
-                      eventMonth: "Aug",
-                      eventTitle: "Retreat",
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                    child: SingleEventItem(
-                      eventMonth: "Sep",
-                      eventTitle: "Token to Outgoing Officials",
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                    child: SingleEventItem(
-                      eventMonth: "Oct",
-                      eventTitle: "AGM",
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                    child: SingleEventItem(
-                      eventMonth: "Nov",
-                      eventTitle: "Handing Over",
+                  Text(
+                    "Woman's Guild (Parish Office)",
+                    style: TextStyle(
+                      letterSpacing: 0.7,
+                      fontSize: 10,
+                      fontWeight: FontWeight.w300,
                     ),
                   ),
                 ],
               ),
             ),
-          )
-        ],
+          ],
+        ),
+      ),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.zero,
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
+              child: SingleEventItem(
+                eventMonth: "NOV",
+                eventTitle: "Handing Over",
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+              child: SingleEventItem(
+                eventMonth: "DEC",
+                eventTitle: "Visiting The Chaplain",
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+              child: SingleEventItem(
+                eventMonth: "JAN",
+                eventTitle: "World Day of Prayer",
+                initiallyExpanded: true,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+              child: SingleEventItem(
+                eventMonth: "FEB",
+                eventTitle: "Acts of Mercy",
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+              child: SingleEventItem(
+                eventMonth: "Mar",
+                eventTitle: "Joint Fellowship",
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+              child: SingleEventItem(
+                eventMonth: "Apr",
+                eventTitle: "Full Council Meeting",
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+              child: SingleEventItem(
+                eventMonth: "May",
+                eventTitle: "All Ladies Seminar",
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+              child: SingleEventItem(
+                eventMonth: "Jun",
+                eventTitle: "Economic Empowerment",
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+              child: SingleEventItem(
+                eventMonth: "Jul",
+                eventTitle: "Executive Meeting",
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+              child: SingleEventItem(
+                eventMonth: "Aug",
+                eventTitle: "Retreat",
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+              child: SingleEventItem(
+                eventMonth: "Sep",
+                eventTitle: "Token to Outgoing Officials",
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+              child: SingleEventItem(
+                eventMonth: "Oct",
+                eventTitle: "AGM",
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+              child: SingleEventItem(
+                eventMonth: "Nov",
+                eventTitle: "Handing Over",
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

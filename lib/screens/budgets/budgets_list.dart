@@ -1,9 +1,12 @@
+import 'dart:math';
+
 import 'package:churchgroupsmanagement/screens/budgets/budgets_single.dart';
 import 'package:churchgroupsmanagement/screens/budgets/create_new_budget.dart';
 import 'package:churchgroupsmanagement/services/constants.dart';
 import 'package:churchgroupsmanagement/widgets/main_app_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class AllGroupBudgets extends StatefulWidget {
   const AllGroupBudgets({super.key});
@@ -16,76 +19,103 @@ class _AllGroupBudgetsState extends State<AllGroupBudgets> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          MainPageAppBar(
-            pageTitle: "Group Budgets",
-            pageSubtitle: "Woman's Guild",
-            onTapAdd: () {
-              Navigator.of(context).push(CupertinoPageRoute(builder: (context) {
-                return const CreateNewBudget();
-              }));
-            },
-            onTapSearch: () {
-              Navigator.of(context).push(CupertinoPageRoute(builder: (context) {
-                return const CreateNewBudget();
-              }));
-            },
-          ),
-          const Expanded(
-            child: SingleChildScrollView(
-              padding: EdgeInsets.fromLTRB(15, 20, 15, 25),
-              child: Column(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        centerTitle: false,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            GestureDetector(
+              onTap: () => Navigator.of(context).pop(),
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.blue,
+                    width: 1,
+                  ),
+                  shape: BoxShape.circle,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(7.0),
+                  child: Image.asset(
+                    "assets/icons/back.png",
+                    color: Colors.blue,
+                    width: 15,
+                    height: 15,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(width: 15),
+            SizedBox(
+              width: ScreenDimension().screenWidth(context) * 0.60,
+              child: const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
-                    child: SingleBudgetListItem(
-                      budgetStatus: "Proposed",
-                      budgetYear: "2023 - 2024",
-                      lastUpdateDate: "Sun 20/11/2023 at 4:37 PM",
-                      budgetTotal: "378,500",
+                    padding: EdgeInsets.zero,
+                    child: Text(
+                      "Group Budgets",
+                      style: TextStyle(
+                        fontFamily: "Poppins",
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 0.7,
+                        height: 1.5,
+                        fontSize: 14,
+                      ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 10, 0, 20),
-                    child: SingleBudgetListItem(
-                      budgetStatus: "Current",
-                      budgetYear: "2022 - 2023",
-                      lastUpdateDate: "Tue 20/09/2022 at 7:10 PM",
-                      budgetTotal: "240,760",
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 10, 0, 20),
-                    child: SingleBudgetListItem(
-                      budgetStatus: "Closed",
-                      budgetYear: "2021 - 2022",
-                      lastUpdateDate: "Tue 20/09/2022 at 7:10 PM",
-                      budgetTotal: "200,540",
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 10, 0, 20),
-                    child: SingleBudgetListItem(
-                      budgetStatus: "Closed",
-                      budgetYear: "2020 - 2021",
-                      lastUpdateDate: "Tue 20/09/2022 at 7:10 PM",
-                      budgetTotal: "150,290",
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 10, 0, 20),
-                    child: SingleBudgetListItem(
-                      budgetStatus: "Closed",
-                      budgetYear: "2019 - 2020",
-                      lastUpdateDate: "Tue 20/09/2022 at 7:10 PM",
-                      budgetTotal: "200,180",
+                  Text(
+                    "Woman's Guild (Parish Office)",
+                    style: TextStyle(
+                      letterSpacing: 0.7,
+                      fontSize: 10,
+                      fontWeight: FontWeight.w300,
                     ),
                   ),
                 ],
               ),
             ),
+          ],
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 15),
+            child: IconButton(
+              onPressed: () {},
+              icon: const Icon(CupertinoIcons.search),
+            ),
+          ),
+        ],
+      ),
+      body: ListView(
+        padding: EdgeInsets.fromLTRB(0, 5, 0, 25),
+        children: [
+          SingleBudgetListItem(
+            budgetStatus: "Proposed",
+            budgetYear: "2023 - 2024",
+            budgetTotal: "378,500",
+          ),
+          SingleBudgetListItem(
+            budgetStatus: "Current",
+            budgetYear: "2022 - 2023",
+            budgetTotal: "240,760",
+          ),
+          SingleBudgetListItem(
+            budgetStatus: "Closed",
+            budgetYear: "2021 - 2022",
+            budgetTotal: "200,540",
+          ),
+          SingleBudgetListItem(
+            budgetStatus: "Closed",
+            budgetYear: "2020 - 2021",
+            budgetTotal: "150,290",
+          ),
+          SingleBudgetListItem(
+            budgetStatus: "Closed",
+            budgetYear: "2019 - 2020",
+            budgetTotal: "200,180",
           ),
         ],
       ),
@@ -98,13 +128,11 @@ class SingleBudgetListItem extends StatelessWidget {
     super.key,
     required this.budgetYear,
     required this.budgetTotal,
-    required this.lastUpdateDate,
     required this.budgetStatus,
   });
 
   final String budgetYear;
   final String budgetTotal;
-  final String lastUpdateDate;
   final String budgetStatus;
 
   @override
@@ -115,87 +143,138 @@ class SingleBudgetListItem extends StatelessWidget {
           return const SingleGroupBudget();
         }));
       },
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Image.asset(
-                "assets/images/planning.png",
-                width: 32,
-              ),
-              const SizedBox(width: 12),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    width: ScreenDimension().screenWidth(context) * .65,
-                    child: Text(
-                      "Year $budgetYear".toUpperCase(),
-                      style: const TextStyle(
-                        fontFamily: "OpenSansSemiCondensed",
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 0.5,
-                        height: 1.7,
-                      ),
-                    ),
+      child: Card(
+        clipBehavior: Clip.hardEdge,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5),
+        ),
+        margin: EdgeInsets.fromLTRB(15, 10, 15, 15),
+        elevation: 1,
+        child: Stack(
+          children: [
+            Container(
+              width: ScreenDimension().screenWidth(context),
+              height: ScreenDimension().screenHeight(context) * 0.16,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage(
+                    "assets/images/template.png",
                   ),
-                  SizedBox(
-                    width: ScreenDimension().screenWidth(context) * .65,
-                    child: Text(
-                      "Total Budget: KShs. $budgetTotal",
-                      style: const TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 0.3,
-                        height: 1,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  SizedBox(
-                    width: ScreenDimension().screenWidth(context) * .65,
-                    child: Text(
-                      "Last updated on $lastUpdateDate",
-                      style: const TextStyle(
-                        fontSize: 10,
-                        color: Color.fromARGB(255, 83, 82, 82),
-                        letterSpacing: 0.3,
-                        height: 1,
-                      ),
-                    ),
-                  ),
-                ],
-              )
-            ],
-          ),
-          Container(
-            decoration: BoxDecoration(
-              color: budgetStatus == "Proposed"
-                  ? Colors.amber
-                  : budgetStatus == "Current"
-                      ? Colors.green
-                      : Colors.red,
-              borderRadius: BorderRadius.circular(5),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(6, 4, 6, 4),
-              child: Text(
-                budgetStatus,
-                style: const TextStyle(
-                  fontSize: 9,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
-          ),
-        ],
+            Positioned(
+              top: 0,
+              left: 0,
+              child: SizedBox(
+                width: ScreenDimension().screenWidth(context) * 0.6,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 12, 5, 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Financial Year",
+                            style: TextStyle(
+                              fontFamily: "Poppins",
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                              height: 1.5,
+                              color: Colors.white,
+                            ),
+                          ),
+                          SizedBox(height: 3),
+                          Text(
+                            budgetYear,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 22,
+                              fontWeight: FontWeight.w900,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              top: 12,
+              right: 10,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: budgetStatus == "Proposed"
+                      ? Colors.amber
+                      : budgetStatus == "Current"
+                          ? Colors.green
+                          : Colors.red,
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(6, 4, 6, 4),
+                  child: Text(
+                    budgetStatus.toUpperCase(),
+                    style: const TextStyle(
+                      fontSize: 10,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: 0,
+              child: Container(
+                padding: EdgeInsets.fromLTRB(8, 5, 8, 10),
+                width: ScreenDimension().screenWidth(context) - 30,
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 232, 232, 232),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(5),
+                    bottomRight: Radius.circular(5),
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 3),
+                    Text(
+                      "KShs. ${budgetTotal} proposed total",
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    SizedBox(height: 5),
+                    LinearPercentIndicator(
+                      lineHeight: 7.0,
+                      progressColor: AppDecorations().mainBlueColor,
+                      percent: Random().nextDouble(),
+                      padding: EdgeInsets.only(right: 10),
+                      barRadius: Radius.circular(3),
+                      trailing: Text(
+                        "${Random().nextInt(100)}% utilised!",
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

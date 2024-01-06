@@ -6,6 +6,7 @@ import 'package:churchgroupsmanagement/screens/requisitions/requisitions_list.da
 import 'package:churchgroupsmanagement/screens/returns/returns_list.dart';
 import 'package:churchgroupsmanagement/screens/root_navigation.dart';
 import 'package:churchgroupsmanagement/services/constants.dart';
+import 'package:cool_alert/cool_alert.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -33,16 +34,61 @@ class _HomeLandingScreenState extends State<HomeLandingScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                GestureDetector(
-                  onTap: () => zoomDrawerController.toggle!(),
-                  child: Image.asset(
-                    "assets/icons/menus.png",
-                    width: 25,
-                    color: AppDecorations().mainBlueColor,
-                  ),
+                const Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 3),
+                    Text(
+                      "Welcome Back!",
+                      style: TextStyle(
+                        fontFamily: "Poppins",
+                        fontSize: 20,
+                        fontWeight: FontWeight.w900,
+                        height: 1.5,
+                      ),
+                    ),
+                    SizedBox(height: 3),
+                    Text(
+                      "Mrs. Isabel Ramirez",
+                      style: TextStyle(
+                        fontFamily: "Poppins",
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        height: 1.5,
+                        color: Color.fromARGB(255, 147, 149, 152),
+                      ),
+                    ),
+                  ],
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    CoolAlert.show(
+                      context: context,
+                      type: CoolAlertType.error,
+                      barrierDismissible: false,
+                      title: "Are you sure?",
+                      text:
+                          "You are about to logout from the dashboard. Ensure all changes are saved before you leave!",
+                      confirmBtnColor: AppDecorations().mainBlueColor,
+                      confirmBtnText: "Stay",
+                      showCancelBtn: true,
+                      cancelBtnText: "Logout",
+                      confirmBtnTextStyle: const TextStyle(
+                        fontFamily: "Poppins",
+                        height: 1.5,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
+                      cancelBtnTextStyle: const TextStyle(
+                        fontFamily: "Poppins",
+                        color: Colors.red,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 14,
+                        height: 1.5,
+                      ),
+                    );
+                  },
                   child: Container(
                     decoration: BoxDecoration(
                       border: Border.all(
@@ -52,25 +98,14 @@ class _HomeLandingScreenState extends State<HomeLandingScreen> {
                     ),
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(8, 5, 8, 5),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text(
-                            "Woman's Guild",
-                            style: TextStyle(
-                              fontFamily: "Poppins",
-                              fontWeight: FontWeight.w700,
-                              fontSize: 12,
-                              color: AppDecorations().mainBlueColor,
-                            ),
-                          ),
-                          const SizedBox(width: 5),
-                          Icon(
-                            CupertinoIcons.chevron_down,
-                            size: 20,
-                            color: AppDecorations().mainBlueColor,
-                          ),
-                        ],
+                      child: Text(
+                        "Log Out",
+                        style: TextStyle(
+                          fontFamily: "Poppins",
+                          fontWeight: FontWeight.w700,
+                          fontSize: 12,
+                          color: AppDecorations().mainBlueColor,
+                        ),
                       ),
                     ),
                   ),
@@ -85,75 +120,122 @@ class _HomeLandingScreenState extends State<HomeLandingScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(15, 5, 10, 10),
-                    child: SizedBox(
-                      width: ScreenDimension().screenWidth(context) * 0.9,
-                      child: const Text(
-                        "Welcome Back!",
-                        maxLines: 1,
-                        overflow: TextOverflow.clip,
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontFamily: "OpenSansSemiCondensed",
-                          height: 2,
-                          fontWeight: FontWeight.w800,
-                          color: Color.fromARGB(255, 66, 65, 65),
+                    padding: const EdgeInsets.fromLTRB(15, 10, 15, 20),
+                    child: Stack(
+                      children: [
+                        Container(
+                          width: ScreenDimension().screenWidth(context),
+                          height: ScreenDimension().screenHeight(context) * 0.2,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage(
+                                "assets/images/template.png",
+                              ),
+                            ),
+                          ),
                         ),
+                        Positioned(
+                          top: 0,
+                          left: 0,
+                          child: SizedBox(
+                            width: ScreenDimension().screenWidth(context) * 0.6,
+                            height:
+                                ScreenDimension().screenHeight(context) * 0.19,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 12, 5, 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  const Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Woman's Guild",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w900,
+                                        ),
+                                      ),
+                                      SizedBox(height: 5),
+                                      Text(
+                                        "Group Secretary",
+                                        style: TextStyle(
+                                          fontFamily: "Poppins",
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w600,
+                                          height: 1.5,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      SizedBox(height: 5),
+                                      Text(
+                                        "Parish Office",
+                                        style: TextStyle(
+                                          fontFamily: "Poppins",
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w400,
+                                          height: 1.5,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      roleSwitchModal(context);
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        border: Border.all(
+                                          color: Colors.white,
+                                        ),
+                                        borderRadius: BorderRadius.circular(5),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            8, 5, 8, 5),
+                                        child: Text(
+                                          "Change Group",
+                                          style: TextStyle(
+                                            fontFamily: "Poppins",
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 12,
+                                            color:
+                                                AppDecorations().mainBlueColor,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(15, 5, 0, 10),
+                    child: Text(
+                      "Quick Stats",
+                      style: TextStyle(
+                        fontFamily: "OpenSansSemiCondensed",
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
                       ),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(15, 10, 10, 10),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          "assets/icons/user.png",
-                          width: 40,
-                          height: 40,
-                        ),
-                        const SizedBox(width: 15),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              width:
-                                  ScreenDimension().screenWidth(context) * 0.78,
-                              child: const Text(
-                                "Isabel Ramirez",
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontFamily: "Poppins",
-                                  height: 1.5,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color.fromARGB(255, 66, 65, 65),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              width:
-                                  ScreenDimension().screenWidth(context) * 0.78,
-                              child: const Text(
-                                "Secretary - Woman's Guild (Parish Office)",
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  height: 2,
-                                  fontWeight: FontWeight.w400,
-                                  color: Color.fromARGB(255, 66, 65, 65),
-                                ),
-                              ),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(15, 20, 15, 20),
+                    padding: const EdgeInsets.fromLTRB(15, 10, 15, 20),
                     child: Container(
                       padding: const EdgeInsets.fromLTRB(10, 8, 10, 8),
                       decoration: BoxDecoration(
@@ -164,7 +246,7 @@ class _HomeLandingScreenState extends State<HomeLandingScreen> {
                             color: Colors.grey.withOpacity(0.3),
                           )
                         ],
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(18),
                         color: const Color.fromARGB(187, 255, 255, 255),
                       ),
                       child: const Column(
@@ -263,6 +345,216 @@ class _HomeLandingScreenState extends State<HomeLandingScreen> {
       ),
     );
   }
+
+  Future<dynamic> roleSwitchModal(BuildContext context) {
+    return showModalBottomSheet(
+      isDismissible: true,
+      shape: RoundedRectangleBorder(),
+      isScrollControlled: true,
+      clipBehavior: Clip.hardEdge,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      elevation: 5,
+      context: context,
+      builder: (context) {
+        return IntrinsicHeight(
+          child: Container(
+            padding:
+                EdgeInsets.only(bottom: MediaQuery.of(context).padding.bottom),
+            decoration: BoxDecoration(
+              color: Theme.of(context).scaffoldBackgroundColor,
+            ),
+            child: Column(
+              children: [
+                SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      onPressed: () => Navigator.pop(context),
+                      icon: Image.asset(
+                        "assets/icons/close.png",
+                        width: 15,
+                        color: const Color.fromARGB(255, 108, 104, 104),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      "Switch Official Roles",
+                      style: TextStyle(
+                        fontFamily: "Poppins",
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(5),
+                  child: Divider(),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+                  child: Text(
+                    "You can select a different group from the available church groups that you are part of the team of officials. If you do not see any group that you officiate, contact the support team.",
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ),
+                OfficialRoleTile(
+                  roleChurchGroup: "Woman's Guild",
+                  roleChurchLevel: "Parish Office",
+                  roleTitle: "Group Secretary",
+                  selected: true,
+                ),
+                OfficialRoleTile(
+                  roleChurchGroup: "Youth",
+                  roleChurchLevel: "PCEA Kiamumbi Church",
+                  roleTitle: "Group Chairperson",
+                  selected: false,
+                ),
+                OfficialRoleTile(
+                  roleChurchGroup: "Youth",
+                  roleChurchLevel: "Parish Office",
+                  roleTitle: "Group Chairperson",
+                  selected: false,
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(15, 20, 15, 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      GestureDetector(
+                        onTap: () => Navigator.pop(context),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: AppDecorations().mainBlueColor,
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+                            child: Text(
+                              "Switch Active Group",
+                              style: TextStyle(
+                                fontFamily: "Poppins",
+                                fontWeight: FontWeight.w700,
+                                fontSize: 14,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () => Navigator.pop(context),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: AppDecorations().mainBlueColor,
+                            ),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+                            child: Text(
+                              "Cancel",
+                              style: TextStyle(
+                                fontFamily: "Poppins",
+                                fontWeight: FontWeight.w700,
+                                fontSize: 14,
+                                color: AppDecorations().mainBlueColor,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class OfficialRoleTile extends StatelessWidget {
+  const OfficialRoleTile({
+    super.key,
+    required this.roleTitle,
+    required this.roleChurchLevel,
+    required this.roleChurchGroup,
+    required this.selected,
+  });
+
+  final String roleTitle;
+  final String roleChurchLevel;
+  final String roleChurchGroup;
+  final bool selected;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(15, 10, 10, 10),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image.asset(
+            "assets/icons/user.png",
+            width: 40,
+            height: 40,
+          ),
+          const SizedBox(width: 15),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: ScreenDimension().screenWidth(context) * 0.70,
+                child: Text(
+                  roleChurchGroup,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontFamily: "Poppins",
+                    height: 1.5,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 66, 65, 65),
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: ScreenDimension().screenWidth(context) * 0.70,
+                child: Text(
+                  "${roleTitle} - $roleChurchLevel",
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 12,
+                    height: 2,
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromARGB(255, 66, 65, 65),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(width: 10),
+          selected
+              ? Icon(
+                  CupertinoIcons.checkmark_alt_circle_fill,
+                  color: AppDecorations().mainBlueColor,
+                  size: 20,
+                )
+              : SizedBox(),
+        ],
+      ),
+    );
+  }
 }
 
 class SingleDocumentThumbnail extends StatelessWidget {
@@ -354,6 +646,7 @@ class SingleAnalyticItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       color: const Color.fromARGB(255, 64, 156, 255),
       surfaceTintColor: Colors.transparent,
       clipBehavior: Clip.hardEdge,
