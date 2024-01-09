@@ -1,87 +1,280 @@
-List<Map<String, dynamic>> churchEventsList = [
+List<Map<String, dynamic>> sampleCalendarBudget = [
+  // October 2023
   {
-    "event_title": "Easter Celebration",
-    "event_month": "Apr",
-    "budget_funds": 5000,
-    "kitty_fund": 1000,
-    "funds_total": 6000,
+    'title': "Community Outreach Day",
+    'month': 'October 2023',
+    'budget': {
+      'budgetAmount': 18000,
+      'kittyAmount': 2500,
+      'total': 20500,
+    },
+    'objectives': ['Serve the community', 'Promote Christian values'],
+    'requirements': ['Volunteers', 'Donations', 'Transportation'],
   },
   {
-    "event_title": "Pentecost Sunday",
-    "event_month": "May",
-    "budget_funds": 8000,
-    "kitty_fund": 1500,
-    "funds_total": 9500,
+    'title': 'Choir Concert Night',
+    'month': 'October 2023',
+    'budget': {
+      'budgetAmount': 12000,
+      'kittyAmount': 2000,
+      'total': 14000,
+    },
+    'objectives': ['Celebrate through music', 'Engage the congregation'],
+    'requirements': ['Choir members', 'Concert hall', 'Sound system'],
+  },
+
+  // November 2023
+  {
+    'title': 'Thanksgiving Dinner',
+    'month': 'November 2023',
+    'budget': {
+      'budgetAmount': 25000,
+      'kittyAmount': 5000,
+      'total': 30000,
+    },
+    'objectives': ['Express gratitude', 'Strengthen community bonds'],
+    'requirements': ['Banquet hall', 'Catering', 'Thanksgiving decorations'],
   },
   {
-    "event_title": "Church Anniversary",
-    "event_month": "Jun",
-    "budget_funds": 10000,
-    "kitty_fund": 2000,
-    "funds_total": 12000,
+    'title': 'Prayer Vigil Night',
+    'month': 'November 2023',
+    'budget': {
+      'budgetAmount': 12000,
+      'kittyAmount': 2000,
+      'total': 14000,
+    },
+    'objectives': ['Seek divine guidance', 'Foster unity through prayer'],
+    'requirements': ['Prayer space', 'Candles', 'Prayer leaders'],
   },
   {
-    "event_title": "Vacation Bible School",
-    "event_month": "Jul",
-    "budget_funds": 6000,
-    "kitty_fund": 1200,
-    "funds_total": 7200,
+    'title': 'Youth Movie Night',
+    'month': 'November 2023',
+    'budget': {
+      'budgetAmount': 8000,
+      'kittyAmount': 1000,
+      'total': 9000,
+    },
+    'objectives': ['Youth fellowship', 'Provide positive entertainment'],
+    'requirements': ['Movie screening equipment', 'Snacks', 'Youth leaders'],
+  },
+
+  // December 2023
+  {
+    'title': 'Christmas Carol Service',
+    'month': 'December 2023',
+    'budget': {
+      'budgetAmount': 18000,
+      'kittyAmount': 2500,
+      'total': 20500,
+    },
+    'objectives': ['Celebrate Christmas', 'Spread joy through carols'],
+    'requirements': ['Choir members', 'Caroling route', 'Refreshments'],
+  },
+
+  // January 2024
+  {
+    'title': "New Year's Day Service",
+    'month': 'January 2024',
+    'budget': {
+      'budgetAmount': 20000,
+      'kittyAmount': 5000,
+      'total': 25000,
+    },
+    'objectives': ['Reflect on the past year', 'Set spiritual goals'],
+    'requirements': ['Worship space', 'New Year decorations', 'Refreshments'],
   },
   {
-    "event_title": "Youth Revival",
-    "event_month": "Aug",
-    "budget_funds": 7500,
-    "kitty_fund": 1500,
-    "funds_total": 9000,
+    'title': 'Community Bible Study',
+    'month': 'January 2024',
+    'budget': {
+      'budgetAmount': 15000,
+      'kittyAmount': 3000,
+      'total': 18000,
+    },
+    'objectives': ['Encourage biblical understanding', 'Build community'],
+    'requirements': ['Study materials', 'Facilitators', 'Refreshments'],
   },
   {
-    "event_title": "Harvest Festival",
-    "event_month": "Sep",
-    "budget_funds": 9000,
-    "kitty_fund": 1800,
-    "funds_total": 10800,
+    'title': 'Youth Leadership Training',
+    'month': 'January 2024',
+    'budget': {
+      'budgetAmount': 12000,
+      'kittyAmount': 2000,
+      'total': 14000,
+    },
+    'objectives': ['Empower youth leaders', 'Enhance youth programs'],
+    'requirements': [
+      'Training materials',
+      'Leadership trainers',
+      'Refreshments'
+    ],
+  },
+
+  // February 2024
+  {
+    'title': "Valentine's Day Fellowship",
+    'month': 'February 2024',
+    'budget': {
+      'budgetAmount': 12000,
+      'kittyAmount': 2000,
+      'total': 14000,
+    },
+    'objectives': ['Celebrate love and friendship', 'Foster community'],
+    'requirements': ['Decorations', 'Refreshments', 'Entertainment'],
   },
   {
-    "event_title": "Mega Worship Night",
-    "event_month": "Oct",
-    "budget_funds": 12000,
-    "kitty_fund": 2500,
-    "funds_total": 14500,
+    'title': 'Small Group Discipleship',
+    'month': 'February 2024',
+    'budget': {
+      'budgetAmount': 10000,
+      'kittyAmount': 1500,
+      'total': 11500,
+    },
+    'objectives': ['Deepen spiritual connections', 'Study the Bible together'],
+    'requirements': ['Host homes', 'Study materials', 'Refreshments'],
+  },
+
+  // March 2024 - No events
+
+  // April 2024
+  {
+    'title': 'Easter Sunday Service',
+    'month': 'April 2024',
+    'budget': {
+      'budgetAmount': 12000,
+      'kittyAmount': 2000,
+      'total': 14000,
+    },
+    'objectives': ['Celebrate the resurrection', 'Inspire faith'],
+    'requirements': ['Easter decorations', 'Worship space', 'Refreshments'],
   },
   {
-    "event_title": "Community Thanksgiving Dinner",
-    "event_month": "Nov",
-    "budget_funds": 6000,
-    "kitty_fund": 1200,
-    "funds_total": 7200,
+    'title': 'Community Clean-Up Day',
+    'month': 'April 2024',
+    'budget': {
+      'budgetAmount': 18000,
+      'kittyAmount': 2500,
+      'total': 20500,
+    },
+    'objectives': [
+      'Beautify the community',
+      'Promote environmental stewardship'
+    ],
+    'requirements': ['Cleaning supplies', 'Volunteers', 'Refreshments'],
   },
   {
-    "event_title": "Christmas Concert",
-    "event_month": "Dec",
-    "budget_funds": 15000,
-    "kitty_fund": 3000,
-    "funds_total": 18000,
+    'title': 'Bible Study Marathon',
+    'month': 'April 2024',
+    'budget': {
+      'budgetAmount': 12000,
+      'kittyAmount': 2000,
+      'total': 14000,
+    },
+    'objectives': ['Deepen biblical knowledge', 'Encourage consistent study'],
+    'requirements': ['Study materials', 'Facilitators', 'Refreshments'],
+  },
+
+  // May 2024
+  {
+    'title': "Mother's Day Appreciation",
+    'month': 'May 2024',
+    'budget': {
+      'budgetAmount': 10000,
+      'kittyAmount': 1500,
+      'total': 11500,
+    },
+    'objectives': ['Celebrate mothers', 'Show appreciation'],
+    'requirements': ['Gifts', 'Decorations', 'Refreshments'],
+  },
+
+  // June 2024 - No events
+
+  // July 2024
+  {
+    'title': 'Independence Day Picnic',
+    'month': 'July 2024',
+    'budget': {
+      'budgetAmount': 15000,
+      'kittyAmount': 3000,
+      'total': 18000,
+    },
+    'objectives': ['Celebrate Independence Day', 'Foster community'],
+    'requirements': ['Picnic area', 'Food and drinks', 'Games'],
   },
   {
-    "event_title": "New Year's Eve Watch Night",
-    "event_month": "Jan",
-    "budget_funds": 10000,
-    "kitty_fund": 2000,
-    "funds_total": 12000,
+    'title': 'Youth Summer Camp',
+    'month': 'July 2024',
+    'budget': {
+      'budgetAmount': 12000,
+      'kittyAmount': 2000,
+      'total': 14000,
+    },
+    'objectives': [
+      'Provide spiritual growth opportunities',
+      'Build youth community'
+    ],
+    'requirements': ['Campsite reservation', 'Camp counselors', 'Activities'],
+  },
+
+  // August 2024
+  {
+    'title': 'Back-to-School Prayer Breakfast',
+    'month': 'August 2024',
+    'budget': {
+      'budgetAmount': 18000,
+      'kittyAmount': 2500,
+      'total': 20500,
+    },
+    'objectives': [
+      'Bless the upcoming school year',
+      'Support students and educators'
+    ],
+    'requirements': ['Venue reservation', 'Catering', 'Prayer leaders'],
   },
   {
-    "event_title": "Leadership Conference",
-    "event_month": "Feb",
-    "budget_funds": 12000,
-    "kitty_fund": 2500,
-    "funds_total": 14500,
+    'title': 'Family Game Night',
+    'month': 'August 2024',
+    'budget': {
+      'budgetAmount': 12000,
+      'kittyAmount': 2000,
+      'total': 14000,
+    },
+    'objectives': ['Promote family bonding', 'Provide wholesome entertainment'],
+    'requirements': ['Game supplies', 'Snacks', 'Volunteers'],
   },
   {
-    "event_title": "Good Friday Service",
-    "event_month": "Mar",
-    "budget_funds": 6000,
-    "kitty_fund": 1200,
-    "funds_total": 7200,
+    'title': 'Youth Talent Showcase',
+    'month': 'August 2024',
+    'budget': {
+      'budgetAmount': 15000,
+      'kittyAmount': 3000,
+      'total': 18000,
+    },
+    'objectives': ['Encourage youth talent', 'Foster confidence'],
+    'requirements': ['Talent submissions', 'Stage setup', 'Judges'],
   },
-  // Add more events as needed
+
+  // September 2024
+  {
+    'title': 'Labor Day BBQ',
+    'month': 'September 2024',
+    'budget': {
+      'budgetAmount': 12000,
+      'kittyAmount': 2000,
+      'total': 14000,
+    },
+    'objectives': ['Celebrate Labor Day', 'Promote fellowship'],
+    'requirements': ['BBQ equipment', 'Food and drinks', 'Outdoor venue'],
+  },
+  {
+    'title': 'Back-to-Church Sunday',
+    'month': 'September 2024',
+    'budget': {
+      'budgetAmount': 15000,
+      'kittyAmount': 3000,
+      'total': 18000,
+    },
+    'objectives': ['Welcome newcomers', 'Reconnect with members'],
+    'requirements': ['Invitations', 'Refreshments', 'Welcome team'],
+  },
 ];
