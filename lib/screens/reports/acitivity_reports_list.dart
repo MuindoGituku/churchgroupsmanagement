@@ -1,6 +1,5 @@
 import 'package:churchgroupsmanagement/screens/reports/create_new_activity_report.dart';
 import 'package:churchgroupsmanagement/services/constants.dart';
-import 'package:churchgroupsmanagement/widgets/main_app_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -105,7 +104,7 @@ class _AllActivityReportsState extends State<AllActivityReports> {
           ),
         ],
       ),
-      body: Column(
+      body: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [],
       ),

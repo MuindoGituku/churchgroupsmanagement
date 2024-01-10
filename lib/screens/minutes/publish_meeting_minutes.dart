@@ -161,7 +161,7 @@ class _SecretaryConfirmMinutesState extends State<SecretaryConfirmMinutes> {
               ),
             ),
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.fromLTRB(15, 10, 15, 20),
             child: IconTextField(
               fieldLabel: "Confirmation Date",

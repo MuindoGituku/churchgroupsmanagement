@@ -1,6 +1,5 @@
 import 'package:churchgroupsmanagement/data/sample_chat.dart';
 import 'package:churchgroupsmanagement/services/constants.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';

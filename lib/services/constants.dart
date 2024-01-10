@@ -42,7 +42,7 @@ class AppDecorations {
           fontSize: 10,
         ),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(5),
           borderSide: const BorderSide(
             color: Colors.black,
             width: 1,

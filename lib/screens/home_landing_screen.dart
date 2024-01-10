@@ -4,7 +4,6 @@ import 'package:churchgroupsmanagement/screens/minutes/minutes_list.dart';
 import 'package:churchgroupsmanagement/screens/reports/acitivity_reports_list.dart';
 import 'package:churchgroupsmanagement/screens/requisitions/requisitions_list.dart';
 import 'package:churchgroupsmanagement/screens/returns/returns_list.dart';
-import 'package:churchgroupsmanagement/screens/root_navigation.dart';
 import 'package:churchgroupsmanagement/services/constants.dart';
 import 'package:cool_alert/cool_alert.dart';
 import 'package:flutter/cupertino.dart';
@@ -128,7 +127,7 @@ class _HomeLandingScreenState extends State<HomeLandingScreen> {
                           height: ScreenDimension().screenHeight(context) * 0.2,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            image: DecorationImage(
+                            image: const DecorationImage(
                               fit: BoxFit.cover,
                               image: AssetImage(
                                 "assets/images/template.png",
@@ -349,7 +348,7 @@ class _HomeLandingScreenState extends State<HomeLandingScreen> {
   Future<dynamic> roleSwitchModal(BuildContext context) {
     return showModalBottomSheet(
       isDismissible: true,
-      shape: RoundedRectangleBorder(),
+      shape: const RoundedRectangleBorder(),
       isScrollControlled: true,
       clipBehavior: Clip.hardEdge,
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -365,7 +364,7 @@ class _HomeLandingScreenState extends State<HomeLandingScreen> {
             ),
             child: Column(
               children: [
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -378,8 +377,8 @@ class _HomeLandingScreenState extends State<HomeLandingScreen> {
                         color: const Color.fromARGB(255, 108, 104, 104),
                       ),
                     ),
-                    SizedBox(width: 10),
-                    Text(
+                    const SizedBox(width: 10),
+                    const Text(
                       "Switch Official Roles",
                       style: TextStyle(
                         fontFamily: "Poppins",
@@ -389,12 +388,12 @@ class _HomeLandingScreenState extends State<HomeLandingScreen> {
                     ),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(5),
+                const Padding(
+                  padding: EdgeInsets.all(5),
                   child: Divider(),
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
                   child: Text(
                     "You can select a different group from the available church groups that you are part of the team of officials. If you do not see any group that you officiate, contact the support team.",
                     style: TextStyle(
@@ -403,19 +402,19 @@ class _HomeLandingScreenState extends State<HomeLandingScreen> {
                     ),
                   ),
                 ),
-                OfficialRoleTile(
+                const OfficialRoleTile(
                   roleChurchGroup: "Woman's Guild",
                   roleChurchLevel: "Parish Office",
                   roleTitle: "Group Secretary",
                   selected: true,
                 ),
-                OfficialRoleTile(
+                const OfficialRoleTile(
                   roleChurchGroup: "Youth",
                   roleChurchLevel: "PCEA Kiamumbi Church",
                   roleTitle: "Group Chairperson",
                   selected: false,
                 ),
-                OfficialRoleTile(
+                const OfficialRoleTile(
                   roleChurchGroup: "Youth",
                   roleChurchLevel: "Parish Office",
                   roleTitle: "Group Chairperson",
@@ -433,8 +432,8 @@ class _HomeLandingScreenState extends State<HomeLandingScreen> {
                             color: AppDecorations().mainBlueColor,
                             borderRadius: BorderRadius.circular(5),
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+                          child: const Padding(
+                            padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
                             child: Text(
                               "Switch Active Group",
                               style: TextStyle(
@@ -518,7 +517,7 @@ class OfficialRoleTile extends StatelessWidget {
                   roleChurchGroup,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 14,
                     fontFamily: "Poppins",
                     height: 1.5,
@@ -530,10 +529,10 @@ class OfficialRoleTile extends StatelessWidget {
               SizedBox(
                 width: ScreenDimension().screenWidth(context) * 0.70,
                 child: Text(
-                  "${roleTitle} - $roleChurchLevel",
+                  "$roleTitle - $roleChurchLevel",
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 12,
                     height: 2,
                     fontWeight: FontWeight.w400,
@@ -543,14 +542,14 @@ class OfficialRoleTile extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           selected
               ? Icon(
                   CupertinoIcons.checkmark_alt_circle_fill,
                   color: AppDecorations().mainBlueColor,
                   size: 20,
                 )
-              : SizedBox(),
+              : const SizedBox(),
         ],
       ),
     );

@@ -1,5 +1,3 @@
-import 'package:churchgroupsmanagement/screens/budgets/budget_info.dart';
-import 'package:churchgroupsmanagement/screens/budgets/edit_group_budget.dart';
 import 'package:churchgroupsmanagement/services/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -76,7 +74,7 @@ class _SingleGroupBudgetState extends State<SingleGroupBudget> {
           ],
         ),
       ),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         padding: EdgeInsets.zero,
         child: Column(
           children: [

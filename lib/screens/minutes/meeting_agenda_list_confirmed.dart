@@ -1,6 +1,5 @@
 import 'package:churchgroupsmanagement/data/sample_minutes.dart';
 import 'package:churchgroupsmanagement/services/constants.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ConfirmedMeetingAgendaList extends StatefulWidget {

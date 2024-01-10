@@ -154,7 +154,7 @@ class _DraftPrepMeetingAgendaListState
               ),
             ),
             ReorderableListView.builder(
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               onReorder: (int oldIndex, int newIndex) {
                 setState(() {

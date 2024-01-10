@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:churchgroupsmanagement/screens/calendars/calendar_events_single.dart';
-import 'package:churchgroupsmanagement/screens/calendars/create_new_calendar.dart';
 import 'package:churchgroupsmanagement/services/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -18,26 +17,6 @@ class _AllCalendarEventsState extends State<AllCalendarEvents> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          Navigator.of(context).push(CupertinoPageRoute(builder: (context) {
-            return const CreateNewCalendar();
-          }));
-        },
-        backgroundColor: AppDecorations().mainBlueColor,
-        label: const Text(
-          "New Calendar",
-          style: TextStyle(
-            fontFamily: "Poppins",
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-        ),
-        icon: const Icon(
-          CupertinoIcons.add,
-          color: Colors.white,
-        ),
-      ),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         centerTitle: false,
@@ -109,8 +88,8 @@ class _AllCalendarEventsState extends State<AllCalendarEvents> {
         ],
       ),
       body: ListView(
-        padding: EdgeInsets.fromLTRB(0, 5, 0, 25),
-        children: [
+        padding: const EdgeInsets.fromLTRB(0, 5, 0, 25),
+        children: const [
           SingleCalendarListItem(
             calendarStatus: "Proposed",
             calendarYear: "2023 - 2024",
@@ -167,7 +146,7 @@ class SingleCalendarListItem extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(5),
         ),
-        margin: EdgeInsets.fromLTRB(15, 10, 15, 15),
+        margin: const EdgeInsets.fromLTRB(15, 10, 15, 15),
         elevation: 1,
         child: Stack(
           children: [
@@ -176,7 +155,7 @@ class SingleCalendarListItem extends StatelessWidget {
               height: ScreenDimension().screenHeight(context) * 0.16,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
-                image: DecorationImage(
+                image: const DecorationImage(
                   fit: BoxFit.cover,
                   image: AssetImage(
                     "assets/images/template.png",
@@ -199,7 +178,7 @@ class SingleCalendarListItem extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             "Financial Year",
                             style: TextStyle(
                               fontFamily: "Poppins",
@@ -209,10 +188,10 @@ class SingleCalendarListItem extends StatelessWidget {
                               color: Colors.white,
                             ),
                           ),
-                          SizedBox(height: 3),
+                          const SizedBox(height: 3),
                           Text(
                             calendarYear,
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.white,
                               fontSize: 22,
                               fontWeight: FontWeight.w900,
@@ -253,9 +232,9 @@ class SingleCalendarListItem extends StatelessWidget {
             Positioned(
               bottom: 0,
               child: Container(
-                padding: EdgeInsets.fromLTRB(8, 5, 8, 10),
+                padding: const EdgeInsets.fromLTRB(8, 5, 8, 10),
                 width: ScreenDimension().screenWidth(context) - 30,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Color.fromARGB(255, 232, 232, 232),
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(5),
@@ -265,24 +244,24 @@ class SingleCalendarListItem extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 3),
+                    const SizedBox(height: 3),
                     Text(
-                      "${activitiesNumber} activities added to the calendar",
-                      style: TextStyle(
+                      "$activitiesNumber activities added to the calendar",
+                      style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    SizedBox(height: 5),
+                    const SizedBox(height: 5),
                     LinearPercentIndicator(
                       lineHeight: 7.0,
                       progressColor: AppDecorations().mainBlueColor,
                       percent: Random().nextDouble(),
-                      padding: EdgeInsets.only(right: 10),
-                      barRadius: Radius.circular(3),
+                      padding: const EdgeInsets.only(right: 10),
+                      barRadius: const Radius.circular(3),
                       trailing: Text(
                         "${Random().nextInt(100)}% done!",
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w400,
                         ),

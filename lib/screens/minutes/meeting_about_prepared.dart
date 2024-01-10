@@ -102,13 +102,13 @@ class PreparedMeetingAboutInfo extends StatelessWidget {
                     child: Image.asset(
                       "assets/images/sign.png",
                       fit: BoxFit.contain,
-                      color: Color.fromARGB(255, 124, 121, 121),
+                      color: const Color.fromARGB(255, 124, 121, 121),
                       width: ScreenDimension().screenWidth(context) * 0.4,
                       height: ScreenDimension().screenHeight(context) * 0.15,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(15, 10, 15, 20),
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(15, 10, 15, 20),
                     child: Text(
                       "The minutes for this meeting have not been confirmed yet. To confirm them, they will need to have been read, proposed and seconded in another meeting. You can tap the 'Confirm Meeting Minutes' button below to confirm them. They cannot be edited again once confirmed.",
                       textAlign: TextAlign.center,

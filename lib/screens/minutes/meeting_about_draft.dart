@@ -100,13 +100,13 @@ class DraftMeetingAboutInfo extends StatelessWidget {
                     child: Image.asset(
                       "assets/images/cloud.png",
                       fit: BoxFit.contain,
-                      color: Color.fromARGB(255, 124, 121, 121),
+                      color: const Color.fromARGB(255, 124, 121, 121),
                       width: ScreenDimension().screenWidth(context) * 0.4,
                       height: ScreenDimension().screenHeight(context) * 0.15,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(15, 10, 15, 20),
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(15, 10, 15, 20),
                     child: Text(
                       "This minutes are saved as draft on your phone. To make them availalble to your fellow group officials, tap on the 'Publish Meeting Minutes' below to upload them online. Note that even after publishing them you can still make changes to the minutes.",
                       textAlign: TextAlign.center,
