@@ -1,4 +1,5 @@
 import 'package:churchgroupsmanagement/data/sample_funds.dart';
+import 'package:churchgroupsmanagement/screens/requisitions/requisitions_single.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -36,7 +37,7 @@ class _DraftRequisitionsListState extends State<DraftRequisitionsList> {
                       onTap: () {
                         Navigator.of(context)
                             .push(CupertinoPageRoute(builder: (context) {
-                          return const Placeholder();
+                          return const ExpenseRequisitionDetails();
                         }));
                       },
                       child: Padding(

@@ -2,14 +2,15 @@ import 'package:churchgroupsmanagement/services/constants.dart';
 import 'package:cool_alert/cool_alert.dart';
 import 'package:flutter/material.dart';
 
-class ReturnApprovalStatus extends StatefulWidget {
-  const ReturnApprovalStatus({super.key});
+class RequisitionApprovalStatus extends StatefulWidget {
+  const RequisitionApprovalStatus({super.key});
 
   @override
-  State<ReturnApprovalStatus> createState() => _ReturnApprovalStatusState();
+  State<RequisitionApprovalStatus> createState() =>
+      _RequisitionApprovalStatusState();
 }
 
-class _ReturnApprovalStatusState extends State<ReturnApprovalStatus> {
+class _RequisitionApprovalStatusState extends State<RequisitionApprovalStatus> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +51,7 @@ class _ReturnApprovalStatusState extends State<ReturnApprovalStatus> {
                   Padding(
                     padding: EdgeInsets.zero,
                     child: Text(
-                      "Return Approval Status",
+                      "Requisition Approval Status",
                       style: TextStyle(
                         fontFamily: "Poppins",
                         fontWeight: FontWeight.w700,
@@ -81,7 +82,7 @@ class _ReturnApprovalStatusState extends State<ReturnApprovalStatus> {
             Padding(
               padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
               child: Text(
-                "Track the approval status for this expenditure return. Officials will be notified of any updates to the status of the document. Signing the document will take place in hierarchy.In case of any challenges you can contact the Support Team.",
+                "Track the approval status for this expense requisition. Officials will be notified of any updates to the status of the document. Signing the document will take place in hierarchy.In case of any challenges you can contact the Support Team.",
                 style: TextStyle(),
               ),
             ),
@@ -94,7 +95,7 @@ class _ReturnApprovalStatusState extends State<ReturnApprovalStatus> {
             ApprovalStatusCard(
               churchOfficial: "Secretary's Approval",
               approvalStatus:
-                  "This expenditure return has not been signed off by the Secretary. Tap the button below to sign it.",
+                  "This expense requisition has not been signed off by the Secretary. Tap the button below to sign it.",
               isOfficialSigned: false,
               showApprovalButton: true,
             ),
@@ -217,8 +218,7 @@ class ApprovalStatusCard extends StatelessWidget {
                                 color: AppDecorations().mainBlueColor,
                               ),
                               child: const Padding(
-                                padding:
-                                    EdgeInsets.fromLTRB(15, 8, 15, 8),
+                                padding: EdgeInsets.fromLTRB(15, 8, 15, 8),
                                 child: Text(
                                   "Approve Expenditure Return",
                                   textAlign: TextAlign.center,

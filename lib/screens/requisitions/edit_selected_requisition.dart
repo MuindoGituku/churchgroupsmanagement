@@ -1,17 +1,15 @@
-import 'package:churchgroupsmanagement/data/sample_budget.dart';
 import 'package:churchgroupsmanagement/services/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:grouped_list/grouped_list.dart';
 
-class PublishCalendarToOffice extends StatefulWidget {
-  const PublishCalendarToOffice({super.key});
+class UpdateExpenseRequisition extends StatefulWidget {
+  const UpdateExpenseRequisition({super.key});
 
   @override
-  State<PublishCalendarToOffice> createState() =>
-      _PublishCalendarToOfficeState();
+  State<UpdateExpenseRequisition> createState() =>
+      _UpdateExpenseRequisitionState();
 }
 
-class _PublishCalendarToOfficeState extends State<PublishCalendarToOffice> {
+class _UpdateExpenseRequisitionState extends State<UpdateExpenseRequisition> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,14 +43,14 @@ class _PublishCalendarToOfficeState extends State<PublishCalendarToOffice> {
             ),
             const SizedBox(width: 15),
             SizedBox(
-              width: ScreenDimension().screenWidth(context) * 0.80,
+              width: ScreenDimension().screenWidth(context) * 0.60,
               child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
                     padding: EdgeInsets.zero,
                     child: Text(
-                      "Submit Calendar For Approval",
+                      "Update Expense Requisition",
                       style: TextStyle(
                         fontFamily: "Poppins",
                         fontWeight: FontWeight.w700,
@@ -63,7 +61,7 @@ class _PublishCalendarToOfficeState extends State<PublishCalendarToOffice> {
                     ),
                   ),
                   Text(
-                    "Church Year 2023 - 2024",
+                    "Community Outreach Day",
                     style: TextStyle(
                       letterSpacing: 0.7,
                       fontSize: 10,
@@ -75,36 +73,6 @@ class _PublishCalendarToOfficeState extends State<PublishCalendarToOffice> {
             ),
           ],
         ),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          GroupedListView(
-            shrinkWrap: true,
-            sort: false,
-            elements: sampleCalendarBudget,
-            groupBy: (eachActivity) => eachActivity["month"],
-            groupHeaderBuilder: (element) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  element["month"],
-                  style: const TextStyle(),
-                ),
-              );
-            },
-            itemBuilder: (context, element) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  element["title"],
-                  style: const TextStyle(),
-                ),
-              );
-            },
-          ),
-        ],
       ),
     );
   }

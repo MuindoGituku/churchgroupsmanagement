@@ -1,7 +1,6 @@
 import 'package:churchgroupsmanagement/data/sample_budget.dart';
 import 'package:churchgroupsmanagement/data/sample_calendar_list.dart';
 import 'package:churchgroupsmanagement/services/constants.dart';
-import 'package:churchgroupsmanagement/widgets/text_form_field.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -33,11 +32,11 @@ class _MassDeleteCalendarActivitiesState
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
-        icon: Icon(
+        icon: const Icon(
           CupertinoIcons.add,
           color: Colors.white,
         ),
-        label: Text(
+        label: const Text(
           "Quick Add",
           style: TextStyle(
             color: Colors.white,
@@ -109,11 +108,11 @@ class _MassDeleteCalendarActivitiesState
         ),
       ),
       body: ListView(
-        padding: EdgeInsets.fromLTRB(15, 10, 15, 20),
+        padding: const EdgeInsets.fromLTRB(15, 10, 15, 20),
         children: [
           Table(
             defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-            columnWidths: {
+            columnWidths: const {
               0: IntrinsicColumnWidth(),
               1: FlexColumnWidth(),
               2: IntrinsicColumnWidth(),
@@ -137,7 +136,7 @@ class _MassDeleteCalendarActivitiesState
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           "${index + 1}.",
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: "Poppins",
                             fontSize: 13,
                             fontWeight: FontWeight.bold,
@@ -154,19 +153,19 @@ class _MassDeleteCalendarActivitiesState
                           children: [
                             Text(
                               "${sampleCalendarBudget[index]["title"]}",
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontFamily: "Poppins",
                                 fontWeight: FontWeight.w400,
-                                fontSize: 16,
+                                fontSize: 14,
                                 height: 1.7,
                               ),
                             ),
                             Text(
                               "${sampleCalendarBudget[index]["month"]}",
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontFamily: "Poppins",
                                 fontWeight: FontWeight.w700,
-                                fontSize: 13,
+                                fontSize: 12,
                                 color: Colors.grey,
                                 //height: 1.7,
                               ),
@@ -187,7 +186,7 @@ class _MassDeleteCalendarActivitiesState
                     TableCell(
                       child: IconButton(
                         onPressed: () {},
-                        icon: Icon(
+                        icon: const Icon(
                           CupertinoIcons.delete,
                           color: Colors.red,
                         ),

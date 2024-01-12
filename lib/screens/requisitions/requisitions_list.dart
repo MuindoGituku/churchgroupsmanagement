@@ -30,7 +30,7 @@ class _AllExpenseRequisitionsState extends State<AllExpenseRequisitions>
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           Navigator.of(context).push(CupertinoPageRoute(builder: (context) {
-            return const CreateNewRequisition();
+            return const CreateExpenseRequisition();
           }));
         },
         backgroundColor: AppDecorations().mainBlueColor,
