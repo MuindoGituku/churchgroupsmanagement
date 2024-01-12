@@ -112,8 +112,7 @@ class _AllGroupMinutesState extends State<AllGroupMinutes>
           isScrollable: false,
           padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
           indicatorPadding: EdgeInsets.zero,
-          indicatorSize: TabBarIndicatorSize.label,
-          //tabAlignment: TabAlignment.start,
+          indicatorSize: TabBarIndicatorSize.tab,
           dividerColor: Colors.transparent,
           tabs: const [
             Tab(

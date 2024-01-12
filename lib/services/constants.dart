@@ -36,7 +36,8 @@ class AppDecorations {
           fontSize: 12,
         ),
         helperText: fieldHelper,
-        helperMaxLines: 2,
+        helperMaxLines: 5,
+        errorMaxLines: 5,
         helperStyle: const TextStyle(
           height: 1.3,
           fontSize: 10,

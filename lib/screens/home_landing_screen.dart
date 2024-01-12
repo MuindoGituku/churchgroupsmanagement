@@ -255,17 +255,17 @@ class _HomeLandingScreenState extends State<HomeLandingScreen> {
                             children: [
                               SingleAnalyticItem(
                                 numberCount: "5",
-                                tallyDesc: "Pending Documents",
+                                tallyDesc: "Pending \nDocuments",
                                 artLocation: "assets/icons/time_management.png",
                               ),
                               SingleAnalyticItem(
                                 numberCount: "47",
-                                tallyDesc: "% Budget Utilisation",
+                                tallyDesc: "% Budget \nUtilisation",
                                 artLocation: "assets/icons/speedometer.png",
                               ),
                               SingleAnalyticItem(
                                 numberCount: "80",
-                                tallyDesc: "% Audit Score",
+                                tallyDesc: "% Audit \nScore",
                                 artLocation: "assets/icons/trophy.png",
                               ),
                             ],

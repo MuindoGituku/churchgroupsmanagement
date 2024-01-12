@@ -3,6 +3,7 @@ import 'package:churchgroupsmanagement/screens/calendars/add_activity_to_calenda
 import 'package:churchgroupsmanagement/screens/calendars/calendar_info.dart';
 import 'package:churchgroupsmanagement/screens/calendars/duplicate_event.dart';
 import 'package:churchgroupsmanagement/screens/calendars/edit_activity_in_calendar.dart';
+import 'package:churchgroupsmanagement/screens/calendars/mass_delete_activities.dart';
 import 'package:churchgroupsmanagement/screens/calendars/publish_calendar.dart';
 import 'package:churchgroupsmanagement/services/constants.dart';
 import 'package:cool_alert/cool_alert.dart';
@@ -173,7 +174,7 @@ class _SingleCalendarofEventsState extends State<SingleCalendarofEvents> {
                   onTap: () {
                     Navigator.of(context)
                         .push(CupertinoPageRoute(builder: (context) {
-                      return const PublishCalendarToOffice();
+                      return const MassDeleteCalendarActivities();
                     }));
                   },
                   child: Row(
