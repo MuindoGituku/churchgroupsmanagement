@@ -95,7 +95,7 @@ class _CalendarEventsInfoState extends State<CalendarEventsInfo>
               text: "Approval".toUpperCase(),
             ),
             Tab(
-              text: "Progress".toUpperCase(),
+              text: "Commentary".toUpperCase(),
             ),
           ],
           unselectedLabelStyle: const TextStyle(

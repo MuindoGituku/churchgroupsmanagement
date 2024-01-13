@@ -25,12 +25,29 @@ dependencies:
   percent_indicator: ^4.2.3
   sliding_up_panel: ^2.0.0+1
   grouped_list: ^5.1.2
+  flutter_native_splash: ^2.3.7
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^2.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter_native_splash:
+  color: "#539ef3"
+  image: "assets/icons/ic_launcher_foreground.png"
+  android_12:
+    image: "assets/icons/ic_launcher_foreground.png"
+    color: "#539ef3"
+
+# flutter_launcher_icons:
+#   android: true
+#   adaptive_icon_background: "#539ef3"
+#   adaptive_icon_foreground: "assets/images/folder-trans.png"
+#   ios: true
+#   remove_alpha_ios: true
+#   image_path: "assets/images/folder.png"
 
 flutter:
 

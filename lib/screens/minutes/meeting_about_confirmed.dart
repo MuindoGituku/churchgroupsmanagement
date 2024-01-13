@@ -92,138 +92,28 @@ class ConfirmedMeetingAboutInfo extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(15, 5, 15, 20),
-              child: Table(
-                border: TableBorder.all(color: Colors.black12, width: 0.5),
-                defaultVerticalAlignment: TableCellVerticalAlignment.top,
-                columnWidths: const {
-                  0: IntrinsicColumnWidth(),
-                  1: FlexColumnWidth()
-                },
-                children: [
-                  TableRow(
-                    children: [
-                      TableCell(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            "Secretary".toUpperCase(),
-                            style: const TextStyle(
-                              fontSize: 11,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: "OpenSansSemiCondensed",
-                            ),
-                          ),
-                        ),
-                      ),
-                      const TableCell(
-                        child: Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text(
-                            "Minutes signed by the secretary, Isabel Ramirez, on Sat, 22nd Sept 2023",
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 0.2,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  TableRow(
-                    children: [
-                      TableCell(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            "Proposer".toUpperCase(),
-                            style: const TextStyle(
-                              fontSize: 11,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: "OpenSansSemiCondensed",
-                            ),
-                          ),
-                        ),
-                      ),
-                      const TableCell(
-                        child: Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text(
-                            "Moses Mwathi",
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 0.2,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  TableRow(
-                    children: [
-                      TableCell(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            "Seconder".toUpperCase(),
-                            style: const TextStyle(
-                              fontSize: 11,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: "OpenSansSemiCondensed",
-                            ),
-                          ),
-                        ),
-                      ),
-                      const TableCell(
-                        child: Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text(
-                            "Charles Mwangi Maina",
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 0.2,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  TableRow(
-                    children: [
-                      TableCell(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            "Chairperson".toUpperCase(),
-                            style: const TextStyle(
-                              fontSize: 11,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: "OpenSansSemiCondensed",
-                            ),
-                          ),
-                        ),
-                      ),
-                      const TableCell(
-                        child: Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text(
-                            "Minutes confirmed by the vice chairperson, Douglas Munyua, on Sat, 22nd Sept 2023",
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 0.2,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+            const Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ApprovalStatusCard(
+                  churchOfficial: "Secretary's Approval",
+                  approvalStatus:
+                      "Mrs. Isabel Ramirez signed this document on Saturday, 22nd Jan 2023 at 7:34 PM",
+                  isOfficialSigned: true,
+                ),
+                ApprovalStatusCard(
+                  churchOfficial: "Members' Confirmation",
+                  approvalStatus:
+                      "This minutes were proposed to be true by Mrs. Maureen Wangeci, who was seconded by Miss Maryann Wanjau Mwangi",
+                  isOfficialSigned: true,
+                ),
+                ApprovalStatusCard(
+                  churchOfficial: "Chairperson's Approval",
+                  approvalStatus:
+                      "Mrs. Mary Wamaitha Mungai signed this document on Saturday, 22nd Jan 2023 at 7:34 PM",
+                  isOfficialSigned: true,
+                ),
+              ],
             ),
             GestureDetector(
               onTap: () {
@@ -331,6 +221,119 @@ class ConfirmedMeetingAboutInfo extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class ApprovalStatusCard extends StatelessWidget {
+  const ApprovalStatusCard({
+    super.key,
+    required this.churchOfficial,
+    this.showApprovalButton = false,
+    required this.approvalStatus,
+    required this.isOfficialSigned,
+  });
+
+  final String churchOfficial;
+  final bool showApprovalButton;
+  final bool isOfficialSigned;
+  final String approvalStatus;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      //surfaceTintColor: Colors.transparent,
+      elevation: 2,
+      clipBehavior: Clip.hardEdge,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(3),
+      ),
+      margin: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border(
+            left: BorderSide(
+              width: 7,
+              color: AppDecorations().mainBlueColor,
+            ),
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(8, 10, 8, 10),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                isOfficialSigned
+                    ? "assets/images/checked.png"
+                    : "assets/images/wall-clock.png",
+                width: 30,
+                color: Colors.grey,
+              ),
+              const SizedBox(width: 15),
+              SizedBox(
+                width: ScreenDimension().screenWidth(context) * 0.75,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      churchOfficial,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        fontFamily: "Poppins",
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    Text(
+                      approvalStatus,
+                      style: const TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                        color: Color.fromARGB(255, 137, 136, 136),
+                        height: 1.7,
+                      ),
+                    ),
+                    showApprovalButton
+                        ? GestureDetector(
+                            onTap: () {
+                              CoolAlert.show(
+                                context: context,
+                                type: CoolAlertType.loading,
+                                text:
+                                    "Appending signature to expenditure return...",
+                                autoCloseDuration: const Duration(seconds: 3),
+                              );
+                            },
+                            child: Container(
+                              width: double.maxFinite,
+                              margin: const EdgeInsets.only(top: 10),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(4),
+                                color: AppDecorations().mainBlueColor,
+                              ),
+                              child: const Padding(
+                                padding: EdgeInsets.fromLTRB(15, 8, 15, 8),
+                                child: Text(
+                                  "Approve Expenditure Return",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: "Poppins",
+                                    fontSize: 13,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )
+                        : const SizedBox(),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
