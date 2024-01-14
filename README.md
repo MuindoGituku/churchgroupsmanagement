@@ -2,6 +2,9 @@
 
 Welcome to our Church Management Mobile App, a powerful Flutter application designed to streamline the administrative tasks of our local church. This app is inspired by the efficient operations of various church groups such as Youth, Church School, Woman's Guild, PCMF, Health Board, Evangelism, etc. 
 
+![Frame 2](https://github.com/MuindoGituku/churchgroupsmanagement/assets/66807339/e4da7efd-7a51-4437-8e7d-5acd5b8b3ec9)
+
+
 ## Key Features
 
 ### User Authentication and Authorization
